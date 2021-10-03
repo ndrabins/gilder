@@ -2,6 +2,8 @@ import { deepmerge } from "@mui/utils";
 import ArrowDropDownRounded from "@mui/icons-material/ArrowDropDownRounded";
 import { createTheme, ThemeOptions, Theme } from "@mui/material/styles";
 
+// https://github.com/mui-org/material-ui/blob/master/docs/src/modules/brandingTheme.ts
+
 declare module "@mui/material/styles/createPalette" {
   interface ColorRange {
     50: string;
