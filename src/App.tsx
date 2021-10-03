@@ -1,40 +1,35 @@
 import React from "react";
-import logo from "./static/TransparentLogo.png";
-import styled from "styled-components";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utilities/theme";
 import { AppMenu } from "./components";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import { alpha } from "@mui/material/styles";
+
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Container className="App">
+      <Box className="App" sx={{ flex: 1, height: "100vh" }}>
         <AppMenu />
-        <ContentContainer>
-          <Logo src={logo} className="App-logo" alt="logo" />
-        </ContentContainer>
-      </Container>
+        <Box
+          sx={{
+            justifyContent: "center",
+            display: "flex",
+            bgcolor: (theme) => alpha(theme.palette.grey[800], 1),
+            flex: 1,
+            height: "100%",
+          }}
+        >
+          <Box>
+            <Button variant="contained">Contained</Button>
+          </Box>
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 }
-
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  background: black;
-  flex-direction: column;
-`;
-
-const ContentContainer = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-`;
-
-const Logo = styled.img`
-  height: 160px;
-`;
 
 export default App;
