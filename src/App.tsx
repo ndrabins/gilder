@@ -1,20 +1,27 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
-import "./App.css";
+import logo from "./static/TransparentLogo.png";
 import styled from "styled-components";
 
 function App() {
   return (
     <Container className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+        <Logo src={logo} className="App-logo" alt="logo" />
       </header>
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+`;
+
+const Logo = styled.img`
+  height: 200px;
+`;
 
 export default App;
