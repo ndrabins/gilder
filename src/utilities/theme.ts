@@ -1,12 +1,9 @@
-import { DefaultTheme } from "styled-components";
+import { createTheme } from "@mui/material/styles";
 
-const theme: DefaultTheme = {
-  borderRadius: "5px",
-
-  colors: {
-    main: "cyan",
-    secondary: "magenta",
+const theme = createTheme({
+  palette: {
+    mode: "dark",
   },
-};
+});
 
 export { theme };

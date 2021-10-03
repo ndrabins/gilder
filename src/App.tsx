@@ -1,16 +1,20 @@
 import React from "react";
 import logo from "./static/TransparentLogo.png";
 import styled from "styled-components";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./utilities/theme";
 import { AppMenu } from "./components";
 
 function App() {
   return (
-    <Container className="App">
-      <AppMenu />
-      <ContentContainer>
-        <Logo src={logo} className="App-logo" alt="logo" />
-      </ContentContainer>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container className="App">
+        <AppMenu />
+        <ContentContainer>
+          <Logo src={logo} className="App-logo" alt="logo" />
+        </ContentContainer>
+      </Container>
+    </ThemeProvider>
   );
 }
 
