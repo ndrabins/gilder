@@ -9,10 +9,16 @@ import { Wallet } from "./WalletButton";
 import styled from "styled-components";
 import logo from "../static/TransparentLogo.png";
 import { DiscordSwitcher, DiscordAuthButton } from "../components";
+import { getAccessToken } from "../api/discord";
 
 export const AppMenu: FC = () => {
   useEffect(() => {
-    console.log(window.location.href);
+    // from query string URL after auth with discord
+    console.log(window.location.href.split("?code="));
+    const code = window.location.href.split("?code=")[1];
+    if (code) {
+      getAccessToken(code as string);
+    }
   }, []);
 
   return (
@@ -35,7 +41,6 @@ export const AppMenu: FC = () => {
           >
             <LogoImage src={logo} />
             <DiscordAuthButton />
-            <DiscordSwitcher />
           </Stack>
           <Wallet />
         </Toolbar>
