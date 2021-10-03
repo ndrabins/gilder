@@ -1,1 +1,2 @@
-export { Wallet } from "./WalletButton";
+export * from "./WalletButton";
+export * from "./AppMenu";

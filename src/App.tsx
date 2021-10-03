@@ -1,17 +1,15 @@
 import React from "react";
 import logo from "./static/TransparentLogo.png";
 import styled from "styled-components";
-import { Wallet } from "./components/WalletButton";
+import { AppMenu } from "./components";
 
 function App() {
   return (
     <Container className="App">
-      <header className="App-header">
+      <AppMenu />
+      <ContentContainer>
         <Logo src={logo} className="App-logo" alt="logo" />
-        <WalletRow>
-          <Wallet />
-        </WalletRow>
-      </header>
+      </ContentContainer>
     </Container>
   );
 }
@@ -19,18 +17,20 @@ function App() {
 const Container = styled.div`
   height: 100vh;
   display: flex;
+  background: black;
+  flex-direction: column;
+`;
+
+const ContentContainer = styled.div`
   align-items: center;
   justify-content: center;
-  background: black;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 `;
 
 const Logo = styled.img`
-  height: 200px;
-`;
-
-const WalletRow = styled.div`
-  display: flex;
-  justify-content: center;
+  height: 160px;
 `;
 
 export default App;
