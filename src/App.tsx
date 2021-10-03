@@ -1,12 +1,14 @@
 import React from "react";
 import logo from "./static/TransparentLogo.png";
 import styled from "styled-components";
+import { Wallet } from "./components/WalletButton";
 
 function App() {
   return (
     <Container className="App">
       <header className="App-header">
         <Logo src={logo} className="App-logo" alt="logo" />
+        <Wallet />
       </header>
     </Container>
   );

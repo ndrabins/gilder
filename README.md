@@ -17,6 +17,12 @@ Rust + Anchor
 6. `npm install -g @project-serum/anchor`
    -check its installed correclty with `anchor --version`
 
+## To Run
+
+`yarn install`
+
+`yarn start`
+
 ### Inspired by
 
 https://dev.to/dabit3/the-complete-guide-to-full-stack-solana-development-with-react-anchor-rust-and-phantom-3291
