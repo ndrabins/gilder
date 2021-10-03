@@ -8,7 +8,9 @@ function App() {
     <Container className="App">
       <header className="App-header">
         <Logo src={logo} className="App-logo" alt="logo" />
-        <Wallet />
+        <WalletRow>
+          <Wallet />
+        </WalletRow>
       </header>
     </Container>
   );
@@ -24,6 +26,11 @@ const Container = styled.div`
 
 const Logo = styled.img`
   height: 200px;
+`;
+
+const WalletRow = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export default App;
