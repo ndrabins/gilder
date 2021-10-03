@@ -21,6 +21,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/styled-components": "^5.1.14",
+    "axios": "^0.22.0",
     "install": "^0.13.0",
     "npm": "^7.24.1",
     "react": "^17.0.2",
