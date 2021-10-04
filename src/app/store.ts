@@ -1,9 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import counterReducer from "../features/counter/counterSlice";
+import discordReducer from "../slices/discordSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    discord: discordReducer,
   },
 });
 

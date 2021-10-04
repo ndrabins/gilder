@@ -9,15 +9,18 @@ import { Wallet } from "./WalletButton";
 import styled from "styled-components";
 import logo from "../static/TransparentLogo.png";
 import { DiscordSwitcher, DiscordAuthButton } from "../components";
-import { getAccessToken } from "../api/discord";
+import { useAppDispatch } from "../app/hooks";
+import { authorizeDiscordUser } from "../slices/discordSlice";
 
 export const AppMenu: FC = () => {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     // from query string URL after auth with discord
     console.log(window.location.href.split("?code="));
     const code = window.location.href.split("?code=")[1];
     if (code) {
-      getAccessToken(code as string);
+      dispatch(authorizeDiscordUser(code as string));
     }
   }, []);
 

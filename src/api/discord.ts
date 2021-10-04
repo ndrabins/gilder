@@ -6,7 +6,7 @@ const CLIENT_SECRET = `${process.env.REACT_APP_DISCORD_CLIENT_SECRET}`;
 const TOKEN_ENDPOINT = `${DISCORD_ENDPOINT}/oauth2/token`;
 const GILDER_URL = `${process.env.REACT_APP_GILDER_URL}`;
 
-export const getAccessToken = async (code: string) => {
+export const getAccessTokenRequest = async (code: string) => {
   const formData = new FormData();
   formData.append("grant_type", "authorization_code");
   formData.append("code", code);
@@ -19,15 +19,18 @@ export const getAccessToken = async (code: string) => {
   };
 
   const response = await axios.post(TOKEN_ENDPOINT, formData, { headers });
-  console.log("reponse", response);
+  return response;
+};
 
-  // @ts-ignore
-  const { access_token, token_type } = response.data;
+export const getGuildsRequest = async (
+  access_token: string,
+  token_type: string
+) => {
   const guilds = await axios.get(`${DISCORD_ENDPOINT}/users/@me/guilds`, {
     headers: {
       Authorization: `${token_type} ${access_token}`,
     },
   });
 
-  console.log("guiilds", guilds);
+  return guilds;
 };
