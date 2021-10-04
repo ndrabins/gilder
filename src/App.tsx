@@ -4,6 +4,7 @@ import { theme } from "./utilities/theme";
 import { AppMenu } from "./components";
 import Box from "@mui/material/Box";
 import { alpha } from "@mui/material/styles";
+import { DiscordGuildList } from "./components";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
             flex: 1,
             height: "100%",
           }}
-        ></Box>
+        >
+          <DiscordGuildList />
+        </Box>
       </Box>
     </ThemeProvider>
   );

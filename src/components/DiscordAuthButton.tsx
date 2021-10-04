@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import axios from "axios";
 import { useAppSelector } from "../app/hooks";
 import { RootState } from "../app/store";
 import { DiscordUserAvatar } from "../components";
