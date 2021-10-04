@@ -34,3 +34,16 @@ export const getGuildsRequest = async (
 
   return guilds;
 };
+
+export const getUserRequest = async (
+  access_token: string,
+  token_type: string
+) => {
+  const user = await axios.get(`${DISCORD_ENDPOINT}/users/@me`, {
+    headers: {
+      Authorization: `${token_type} ${access_token}`,
+    },
+  });
+
+  return user;
+};

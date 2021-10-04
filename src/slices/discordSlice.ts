@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../app/store";
-import { getGuildsRequest, getAccessTokenRequest } from "../api/discord";
+import {
+  getGuildsRequest,
+  getAccessTokenRequest,
+  getUserRequest,
+} from "../api/discord";
 
 // TODO: fix ts errors in formdata on responess
 
@@ -33,8 +37,8 @@ export const authorizeDiscordUser = createAsyncThunk(
     //@ts-ignore
     const { access_token, token_type } = response.data;
     const guilds = await getGuildsRequest(access_token, token_type);
-
-    return { ...response.data, guilds };
+    const user = await getUserRequest(access_token, token_type);
+    return { ...response.data, guilds, user };
   }
 );
 
@@ -57,14 +61,15 @@ export const discordSlice = createSlice({
       .addCase(authorizeDiscordUser.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(authorizeDiscordUser.fulfilled, (state, action) => {
+      .addCase(authorizeDiscordUser.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(authorizeDiscordUser.fulfilled, (state, action: any) => {
         state.status = "idle";
-        //@ts-ignore
         state.access_token = action.payload.access_token;
-        //@ts-ignore
         state.token_type = action.payload.token_type;
-        //@ts-ignore
-        state.guilds = action.payload.guilds;
+        state.guilds = action.payload.guilds.data;
+        state.user = action.payload.user.data;
       });
   },
 });
