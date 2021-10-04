@@ -1,5 +1,8 @@
 # Gilder
 
+## About
+Building the best way for discourd guilds to enter the world of crypto and DAOs.
+
 ## Set up instructions
 
 Solana
