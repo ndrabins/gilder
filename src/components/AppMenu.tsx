@@ -28,7 +28,7 @@ export const AppMenu: FC = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -36,7 +36,7 @@ export const AppMenu: FC = () => {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Stack
             spacing={2}
             direction="row"

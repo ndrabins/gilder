@@ -17,7 +17,11 @@ export const DiscordAuthButton: FC = () => {
       {user ? (
         <DiscordUserAvatar user={user} />
       ) : (
-        <Button variant="contained" href={discordAuthUrl}>
+        <Button
+          variant="contained"
+          href={discordAuthUrl}
+          sx={{ bgcolor: "#5865F2" }}
+        >
           Connect Discord
         </Button>
       )}

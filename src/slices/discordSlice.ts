@@ -4,6 +4,7 @@ import {
   getGuildsRequest,
   getAccessTokenRequest,
   getUserRequest,
+  getGuildMembersRequest,
 } from "../api/discord";
 
 // TODO: fix ts errors in formdata on responess
@@ -14,6 +15,8 @@ export interface DiscordState {
   token_type: string;
   user: any;
   guilds: any[];
+  membersStatus: string;
+  guildMembers: any[];
 }
 
 const initialState: DiscordState = {
@@ -22,6 +25,8 @@ const initialState: DiscordState = {
   user: null,
   status: "idle",
   token_type: "",
+  membersStatus: "idle",
+  guildMembers: [],
 };
 
 interface IgetGuildsRequest {
@@ -50,6 +55,20 @@ export const getGuilds = createAsyncThunk(
   }
 );
 
+export const getGuildMembers = createAsyncThunk(
+  "discord/getGuildMembers",
+  async (guildId: string, { getState }) => {
+    const { discord } = getState() as RootState;
+
+    const response = await getGuildMembersRequest(
+      discord.access_token,
+      discord.token_type,
+      guildId
+    );
+    return response.data;
+  }
+);
+
 export const discordSlice = createSlice({
   name: "counter",
   initialState,
@@ -70,6 +89,16 @@ export const discordSlice = createSlice({
         state.token_type = action.payload.token_type;
         state.guilds = action.payload.guilds.data;
         state.user = action.payload.user.data;
+      })
+      .addCase(getGuildMembers.pending, (state) => {
+        state.membersStatus = "loading";
+      })
+      .addCase(getGuildMembers.rejected, (state) => {
+        state.membersStatus = "failed";
+      })
+      .addCase(getGuildMembers.fulfilled, (state, action: any) => {
+        state.membersStatus = "idle";
+        state.guildMembers = action.payload;
       });
   },
 });
