@@ -16,7 +16,6 @@ export const GildCreation = () => {
       <Typography variant="h6" sx={{ color: "grey.100" }}>
         Description
       </Typography>
-      <Button variant="contained">Create Gild(DAO)</Button>
       <Stack direction="row">
         <Card sx={{ minWidth: 275, flexGrow: 2, mr: 2, height: "100%" }}>
           <CardContent>
