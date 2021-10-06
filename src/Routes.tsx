@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { AppMenu, GildCreation } from "./components";
+import { AppMenu } from "./components";
+import { GildCreation } from "./pages";
 import Box from "@mui/material/Box";
 import { alpha } from "@mui/material/styles";
 
@@ -13,7 +14,7 @@ export const Routes = () => {
         sx={{
           justifyContent: "center",
           display: "flex",
-          bgcolor: (theme) => alpha(theme.palette.primaryDark[900], 1),
+          bgcolor: (theme) => alpha(theme.palette.grey[800], 1),
           flex: 1,
           height: "100%",
         }}

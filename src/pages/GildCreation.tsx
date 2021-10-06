@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { DiscordGuildList } from ".";
+import { DiscordGuildList } from "../components";
 
 export const GildCreation = () => {
   return (
