@@ -16,23 +16,27 @@ export const GildCreation = () => {
   const { publicKey, sendTransaction } = useWallet();
 
   const onClick = useCallback(async () => {
-    if (!publicKey) {
-      console.log("no public key", publicKey);
-      // throw new WalletNotConnectedError()
-      return;
+    try {
+      if (!publicKey) {
+        console.log("no public key", publicKey);
+        // throw new WalletNotConnectedError();
+        return;
+      }
+
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: Keypair.generate().publicKey,
+          lamports: 1,
+        })
+      );
+
+      const signature = await sendTransaction(transaction, connection);
+
+      await connection.confirmTransaction(signature, "processed");
+    } catch (error) {
+      console.log(error);
     }
-
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: publicKey,
-        toPubkey: Keypair.generate().publicKey,
-        lamports: 1,
-      })
-    );
-
-    const signature = await sendTransaction(transaction, connection);
-
-    await connection.confirmTransaction(signature, "processed");
   }, [publicKey, sendTransaction, connection]);
 
   return (

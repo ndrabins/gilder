@@ -1,9 +1,8 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo, useCallback, useState } from "react";
 import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   getLedgerWallet,
   getPhantomWallet,
@@ -18,11 +17,16 @@ import {
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
+import { WalletAdapterNetwork, WalletError } from "@solana/wallet-adapter-base";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 export const WalletWrapper: FC = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
   const network = WalletAdapterNetwork.Devnet;
 
@@ -46,9 +50,31 @@ export const WalletWrapper: FC = ({ children }) => {
     [network]
   );
 
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const onError = (error: WalletError) => {
+    setOpen(true);
+    setError(error.message);
+  };
+
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
+      <WalletProvider wallets={wallets} autoConnect onError={onError}>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <MuiAlert
+            onClose={handleClose}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            {error}
+          </MuiAlert>
+        </Snackbar>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
