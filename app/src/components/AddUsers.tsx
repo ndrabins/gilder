@@ -76,15 +76,6 @@ export const AddUsers: FC = () => {
 
           {membersAdded.map((member, index) => (
             <Stack direction="row" sx={{ mb: 2 }} key={index}>
-              {member && (
-                <DiscordUserAvatar
-                  id={member.id}
-                  avatar={member.avatar}
-                  username={member.username}
-                  showName={false}
-                />
-              )}
-
               <TextField
                 id="wallet-key"
                 label="Wallet Key"

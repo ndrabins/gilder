@@ -7,3 +7,4 @@ export * from "./DiscordUserAvatar";
 export * from "./Drawer";
 export * from "./AddUsers";
 export * from "./DaoInfo";
+export * from "./WalletWrapper";
