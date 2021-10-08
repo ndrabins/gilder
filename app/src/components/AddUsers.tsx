@@ -25,6 +25,7 @@ interface Member {
 export const AddUsers: FC = () => {
   const user = useAppSelector((state: RootState) => state.discord.user);
   const [membersAdded, setMemberAdded] = useState<Member[]>([]);
+  const [discordMembers, setDiscordMembers] = useState<Member[]>([]);
 
   useEffect(() => {
     if (user?.id) {
@@ -61,58 +62,109 @@ export const AddUsers: FC = () => {
   // TODO add section for discord connection.
 
   return (
-    <Card sx={{ minWidth: 275, flex: 2 }}>
-      <CardContent>
-        <Typography
-          variant="h4"
-          sx={{ mb: 2 }}
-          color="text.secondary"
-          gutterBottom
-        >
-          Users
-        </Typography>
+    <Stack sx={{ minWidth: 275, flex: 2 }} spacing={3}>
+      <Card>
+        <CardContent>
+          <Typography
+            variant="h5"
+            sx={{ mb: 2 }}
+            color="text.secondary"
+            gutterBottom
+          >
+            Manual User Entry
+          </Typography>
 
-        {membersAdded.map((member, index) => (
-          <Stack direction="row" sx={{ mb: 2 }} key={index}>
-            {member && (
-              <DiscordUserAvatar
-                id={member.id}
-                avatar={member.avatar}
-                username={member.username}
-                showName={false}
+          {membersAdded.map((member, index) => (
+            <Stack direction="row" sx={{ mb: 2 }} key={index}>
+              {member && (
+                <DiscordUserAvatar
+                  id={member.id}
+                  avatar={member.avatar}
+                  username={member.username}
+                  showName={false}
+                />
+              )}
+
+              <TextField
+                id="wallet-key"
+                label="Wallet Key"
+                variant="outlined"
+                sx={{ flexGrow: 3, mr: 1, ml: 1 }}
               />
-            )}
 
-            <TextField
-              id="wallet-key"
-              label="Wallet Key"
-              variant="outlined"
-              sx={{ flexGrow: 3, mr: 1, ml: 1 }}
-            />
+              <TextField
+                id="token-amount"
+                label="Token Amount"
+                variant="outlined"
+                sx={{ flexGrow: 1, mr: 2, ml: 1 }}
+              />
 
-            <TextField
-              id="token-amount"
-              label="Token Amount"
-              variant="outlined"
-              sx={{ flexGrow: 1, mr: 2, ml: 1 }}
-            />
-
-            <Stack justifyContent="center" alignItems="center">
-              <IconButton
-                aria-label="delete"
-                onClick={() => onDeleteClick(index)}
-              >
-                <DeleteIcon />
-              </IconButton>
+              <Stack justifyContent="center" alignItems="center">
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => onDeleteClick(index)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Stack>
             </Stack>
+          ))}
+          <Stack justifyContent="center" alignItems="center">
+            <IconButton aria-label="add member" onClick={addMember}>
+              <AddIcon />
+            </IconButton>
           </Stack>
-        ))}
-        <Stack justifyContent="center" alignItems="center">
-          <IconButton aria-label="add member" onClick={addMember}>
-            <AddIcon />
-          </IconButton>
-        </Stack>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <Typography
+            variant="h5"
+            sx={{ mb: 2 }}
+            color="text.secondary"
+            gutterBottom
+          >
+            Discord Users
+          </Typography>
+
+          {discordMembers.map((member, index) => (
+            <Stack direction="row" sx={{ mb: 2 }} key={index}>
+              {member && (
+                <DiscordUserAvatar
+                  id={member.id}
+                  avatar={member.avatar}
+                  username={member.username}
+                  showName={false}
+                />
+              )}
+
+              <TextField
+                id="wallet-key"
+                label="Wallet Key"
+                variant="outlined"
+                sx={{ flexGrow: 3, mr: 1, ml: 1 }}
+              />
+
+              <TextField
+                id="token-amount"
+                label="Token Amount"
+                variant="outlined"
+                sx={{ flexGrow: 1, mr: 2, ml: 1 }}
+              />
+
+              <Stack justifyContent="center" alignItems="center">
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => onDeleteClick(index)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Stack>
+            </Stack>
+          ))}
+        </CardContent>
+      </Card>
+    </Stack>
   );
 };

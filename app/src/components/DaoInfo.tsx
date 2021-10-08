@@ -14,11 +14,17 @@ export const DaoInfo: FC = () => {
   return (
     <Card sx={{ minWidth: 275, flex: 3, mr: 2 }}>
       <CardContent>
-        <Typography variant="h4" color="text.secondary" gutterBottom>
+        <Typography variant="h5" color="text.secondary" gutterBottom>
           DAO Data
         </Typography>
-        <Stack>
-          <TextField id="wallet-key" label="DAO Name Key" variant="outlined" />
+        <Stack spacing={2}>
+          <TextField id="wallet-key" label="DAO Name" variant="outlined" />
+          <TextField id="token-amt" label="Token Amount" variant="outlined" />
+          <TextField
+            id="token-symbol"
+            label="Token Symbol"
+            variant="outlined"
+          />
         </Stack>
       </CardContent>
     </Card>
