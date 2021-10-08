@@ -16,7 +16,11 @@ export const DiscordAuthButton: FC = () => {
   return (
     <Box sx={{ justifyContent: "center" }}>
       {user ? (
-        <DiscordUserAvatar user={user} />
+        <DiscordUserAvatar
+          id={user.id}
+          avatar={user.avatar}
+          username={user.username}
+        />
       ) : (
         <Button variant="text" href={discordAuthUrl} color="secondary">
           <StyledIcon src={DiscordLogo} alt="discord icon" />

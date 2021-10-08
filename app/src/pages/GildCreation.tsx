@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { DiscordGuildList } from "../components";
+import { DiscordGuildList, AddUsers } from "../components";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 
 export const GildCreation = () => {
@@ -14,7 +14,7 @@ export const GildCreation = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 2, bgcolor: "black" }}>
+    <Box sx={{ flexGrow: 2, p: 3, bgcolor: "black" }}>
       <Stack
         direction="row"
         alignItems="center"
@@ -43,17 +43,7 @@ export const GildCreation = () => {
             </Typography>
           </CardContent>
         </Card>
-        <Card sx={{ minWidth: 275, flexGrow: 1 }}>
-          <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Users
-            </Typography>
-          </CardContent>
-        </Card>
+        <AddUsers />
       </Stack>
     </Box>
   );
