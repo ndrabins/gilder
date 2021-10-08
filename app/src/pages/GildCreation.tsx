@@ -49,7 +49,7 @@ export const GildCreation = () => {
       >
         <Typography variant="h4" sx={{ color: "grey.100" }}></Typography>
         <Box>
-          <Button variant="contained" onClick={onClick}>
+          <Button variant="contained" onClick={onClick} color="secondary">
             Create DAO
           </Button>
         </Box>
