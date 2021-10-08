@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useAppSelector } from "../app/hooks";
-import { RootState } from "../app/store";
+import { useAppSelector } from "../store/hooks";
+import { RootState } from "../store/store";
 import { DiscordUserAvatar } from "../components";
 
 const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=894327916727504946&redirect_uri=${process.env.REACT_APP_GILDER_URL}&response_type=code&scope=guilds%20identify`;

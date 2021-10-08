@@ -9,7 +9,7 @@ import { Wallet } from "./WalletButton";
 import styled from "styled-components";
 import logo from "../static/TransparentLogo.png";
 import { DiscordSwitcher, DiscordAuthButton } from "../components";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch } from "../store/hooks";
 import { authorizeDiscordUser } from "../slices/discordSlice";
 
 export const AppMenu: FC = () => {

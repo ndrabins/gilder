@@ -4,9 +4,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import { RootState } from "../app/store";
-import { useAppSelector } from "../app/hooks";
-import { useAppDispatch } from "../app/hooks";
+import { RootState } from "../store/store";
+import { useAppSelector } from "../store/hooks";
+import { useAppDispatch } from "../store/hooks";
 import { getGuildMembers } from "../slices/discordSlice";
 import Link from "@mui/material/Link";
 
