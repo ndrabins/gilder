@@ -61,7 +61,7 @@ export const AddUsers: FC = () => {
   // TODO add section for discord connection.
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275, flex: 2 }}>
       <CardContent>
         <Typography
           variant="h4"

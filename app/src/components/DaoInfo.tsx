@@ -12,11 +12,14 @@ export const DaoInfo: FC = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Card sx={{ minWidth: 275, flexGrow: 2, mr: 2, height: "100%" }}>
+    <Card sx={{ minWidth: 275, flex: 3, mr: 2 }}>
       <CardContent>
         <Typography variant="h4" color="text.secondary" gutterBottom>
           DAO Data
         </Typography>
+        <Stack>
+          <TextField id="wallet-key" label="DAO Name Key" variant="outlined" />
+        </Stack>
       </CardContent>
     </Card>
   );

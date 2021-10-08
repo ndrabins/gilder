@@ -16,16 +16,14 @@ export const GildCreation = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 2, p: 3, bgcolor: "black" }}>
+    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "black" }}>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
         sx={{ mb: 2 }}
       >
-        <Typography variant="h4" sx={{ color: "grey.100" }}>
-          Create DAO
-        </Typography>
+        <Typography variant="h4" sx={{ color: "grey.100" }}></Typography>
         <Box>
           <Button
             variant="contained"
