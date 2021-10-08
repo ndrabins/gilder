@@ -1,9 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AppMenu } from "./components";
-import { GildCreation } from "./pages";
+import { GildCreation, Dashboard } from "./pages";
 import Box from "@mui/material/Box";
 import { alpha } from "@mui/material/styles";
+
+// 1. Authentication (discord + wallet)
+// Skip discord, can't select guild
+// 2. Creation Flow (select guild and authorize bot);
+// 3. Dashboard of users
 
 export const Routes = () => {
   return (
@@ -20,14 +25,11 @@ export const Routes = () => {
         }}
       >
         <Switch>
+          <Route exact path="/dashboard/:id">
+            <Dashboard />
+          </Route>
           <Route path="/">
             <GildCreation />
-          </Route>
-          <Route path="/creation">
-            <GildCreation />
-          </Route>
-          <Route path="/dashboard">
-            <div> dashboard </div>
           </Route>
         </Switch>
       </Box>
