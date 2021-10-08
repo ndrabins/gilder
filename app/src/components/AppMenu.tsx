@@ -9,13 +9,13 @@ import logo from "../static/GilderLogo.svg";
 import { DiscordAuthButton } from "../components";
 import { useAppDispatch } from "../store/hooks";
 import { authorizeDiscordUser } from "../slices/discordSlice";
+import Divider from "@mui/material/Divider";
 
 export const AppMenu: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     // from query string URL after auth with discord
-    console.log(window.location.href.split("?code="));
     const code = window.location.href.split("?code=")[1];
     if (code) {
       dispatch(authorizeDiscordUser(code as string));
@@ -23,7 +23,11 @@ export const AppMenu: FC = () => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+      }}
+    >
       <AppBar position="static">
         <Toolbar>
           <Stack
@@ -32,6 +36,7 @@ export const AppMenu: FC = () => {
             sx={{ flexGrow: 1, alignItems: "center" }}
           >
             <LogoImage src={logo} />
+            <Divider orientation="vertical" flexItem />
             <DiscordAuthButton />
           </Stack>
           <Wallet />

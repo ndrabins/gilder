@@ -23,10 +23,10 @@ export const DiscordUserAvatar = ({ user }: DiscordAvatarUserProps) => {
       <Avatar
         alt={`${user.username}`}
         src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128%22`}
-        sx={{ mr: 1 }}
+        sx={{ mr: 1, border: "2px solid gray" }}
       />
 
-      <Typography>
+      <Typography sx={{ fontWeight: "bold" }}>
         {user.username}#{user.discriminator}
       </Typography>
     </Stack>

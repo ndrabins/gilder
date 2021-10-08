@@ -14,7 +14,7 @@ export const GildCreation = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 2 }}>
+    <Box sx={{ flexGrow: 1, p: 2, bgcolor: "black" }}>
       <Stack
         direction="row"
         alignItems="center"
