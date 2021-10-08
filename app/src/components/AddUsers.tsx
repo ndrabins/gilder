@@ -58,10 +58,17 @@ export const AddUsers: FC = () => {
     ]);
   };
 
+  // TODO add section for discord connection.
+
   return (
-    <Card sx={{ minWidth: 275, flexGrow: 1 }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography
+          variant="h4"
+          sx={{ mb: 2 }}
+          color="text.secondary"
+          gutterBottom
+        >
           Users
         </Typography>
 
@@ -77,8 +84,15 @@ export const AddUsers: FC = () => {
             )}
 
             <TextField
-              id="outlined-basic"
+              id="wallet-key"
               label="Wallet Key"
+              variant="outlined"
+              sx={{ flexGrow: 3, mr: 1, ml: 1 }}
+            />
+
+            <TextField
+              id="token-amount"
+              label="Token Amount"
               variant="outlined"
               sx={{ flexGrow: 1, mr: 2, ml: 1 }}
             />

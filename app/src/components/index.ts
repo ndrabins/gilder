@@ -6,3 +6,4 @@ export * from "./DiscordGuildList";
 export * from "./DiscordUserAvatar";
 export * from "./Drawer";
 export * from "./AddUsers";
+export * from "./DaoInfo";
