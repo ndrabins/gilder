@@ -3,12 +3,10 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Wallet } from "./WalletButton";
 import styled from "styled-components";
-import logo from "../static/TransparentLogo.png";
-import { DiscordSwitcher, DiscordAuthButton } from "../components";
+import logo from "../static/GilderLogo.svg";
+import { DiscordAuthButton } from "../components";
 import { useAppDispatch } from "../store/hooks";
 import { authorizeDiscordUser } from "../slices/discordSlice";
 
@@ -28,15 +26,6 @@ export const AppMenu: FC = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Stack
             spacing={2}
             direction="row"

@@ -9,6 +9,10 @@ import { DiscordGuildList } from "../components";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 
 export const GildCreation = () => {
+  const handleDAOCreation = () => {
+    console.log("creating dao");
+  };
+
   return (
     <Box sx={{ flexGrow: 1, p: 2 }}>
       <Stack
@@ -21,7 +25,9 @@ export const GildCreation = () => {
           Create DAO
         </Typography>
         <Box>
-          <Button variant="contained">Create DAO</Button>
+          <Button variant="contained" onClick={handleDAOCreation}>
+            Create DAO
+          </Button>
         </Box>
       </Stack>
       <Stack direction="row">
