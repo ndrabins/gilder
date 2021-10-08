@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
 import discordReducer from "../slices/discordSlice";
+import web3Reducer from "../slices/web3Slice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     discord: discordReducer,
+    web3: web3Reducer,
   },
 });
 

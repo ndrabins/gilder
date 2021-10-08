@@ -50,7 +50,13 @@ export const Wallet: FC = () => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <WalletMultiButton />
+          <WalletMultiButton
+            style={{
+              background: "#1C1917",
+              height: "40px",
+              color: "#FDCC17",
+            }}
+          />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

@@ -1,14 +1,16 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { DiscordGuildList, AddUsers, DaoInfo } from "../components";
+import { AddUsers, DaoInfo } from "../components";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { RootState } from "../store/store";
 
 export const GildCreation = () => {
+  const user = useAppSelector((state: RootState) => state.discord.user);
+  const walletKey = useAppSelector((state: RootState) => state.web3.walletKey);
+  const authenticated = user?.id && walletKey;
+
   const handleDAOCreation = () => {
     console.log("creating dao");
   };
@@ -25,7 +27,11 @@ export const GildCreation = () => {
           Create DAO
         </Typography>
         <Box>
-          <Button variant="contained" onClick={handleDAOCreation}>
+          <Button
+            variant="contained"
+            onClick={handleDAOCreation}
+            disabled={!authenticated}
+          >
             Create DAO
           </Button>
         </Box>

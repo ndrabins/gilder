@@ -70,7 +70,7 @@ export const getGuildMembers = createAsyncThunk(
 );
 
 export const discordSlice = createSlice({
-  name: "counter",
+  name: "discord",
   initialState,
   reducers: {},
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
