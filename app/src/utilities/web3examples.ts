@@ -3,7 +3,7 @@
 const web3 = require("@solana/web3.js");
 const splToken = require("@solana/spl-token");
 
-export const getCOnnection = async () => {
+export const getConnection = async () => {
   // Connect to cluster
   const connection = new web3.Connection(
     web3.clusterApiUrl("devnet"),
@@ -13,6 +13,7 @@ export const getCOnnection = async () => {
   return connection;
 };
 
+// mint and send
 const examples = async () => {
   const connection = new web3.Connection(
     web3.clusterApiUrl("devnet"),
@@ -79,3 +80,90 @@ const examples = async () => {
     { commitment: "confirmed" }
   );
 };
+
+// From sol minter
+
+// import {
+//   AccountLayout,
+//   AuthorityType,
+//   MintInfo,
+//   MintLayout,
+//   Token,
+//   u64,
+// } from "@solana/spl-token";
+// import { WalletContextState } from "@solana/wallet-adapter-react";
+// import {
+//   Account,
+//   Commitment,
+//   Connection,
+//   PublicKey,
+//   Signer,
+//   SystemProgram,
+//   Transaction,
+//   TransactionInstruction,
+// } from "@solana/web3.js";
+
+// Allocate memory for the account
+
+//  const balanceNeeded = await Token.getMinBalanceRentForExemptMint(
+//   this.connection
+// );
+
+// const transaction = new Transaction();
+// transaction.add(
+//   SystemProgram.createAccount({
+//     fromPubkey: mintAuthority,
+//     newAccountPubkey: mintAccount.publicKey,
+//     lamports: balanceNeeded,
+//     space: MintLayout.span,
+//     programId,
+//   })
+// );
+
+// transaction.add(
+//   Token.createInitMintInstruction(
+//     programId,
+//     mintAccount.publicKey,
+//     decimal,
+//     mintAuthority,
+//     freezeAuthority
+//   )
+// );
+
+// const balanceAccountNeeded = await Token.getMinBalanceRentForExemptAccount(
+//   this.connection
+// );
+// const tokenAccount = new Account();
+// transaction.add(
+//   SystemProgram.createAccount({
+//     fromPubkey: mintAuthority,
+//     newAccountPubkey: tokenAccount.publicKey,
+//     lamports: balanceAccountNeeded,
+//     space: AccountLayout.span,
+//     programId: programId,
+//   })
+// );
+
+// transaction.add(
+//   Token.createInitAccountInstruction(
+//     programId,
+//     mintAccount.publicKey,
+//     tokenAccount.publicKey,
+//     mintAuthority
+//   )
+// );
+
+// // Send the two instructions
+// const txID = await sendTxUsingExternalSignature(
+//   transaction,
+//   this.connection,
+//   null,
+//   [mintAccount, tokenAccount],
+//   wallet
+// );
+
+// return {
+//   txID,
+//   mintAccount: mintAccount.publicKey.toString(),
+//   tokenAccount: tokenAccount.publicKey.toString(),
+// };
