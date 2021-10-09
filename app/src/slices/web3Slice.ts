@@ -55,8 +55,12 @@ export const mintToken = createAsyncThunk(
     );
 
     // fetches account associated with the public key. Tokens reside in account... wallet owns account
-    let fromTokenAccount = await mint.getOrCreateAssociatedAccountInfo(
+    const fromTokenAccount = await mint.getOrCreateAssociatedAccountInfo(
       fromWallet.publicKey
+    );
+
+    const toTokenAccount = await mint.getOrCreateAssociatedAccountInfo(
+      publicKey
     );
 
     await mint.mintTo(
@@ -79,15 +83,15 @@ export const mintToken = createAsyncThunk(
       splToken.Token.createTransferInstruction(
         splToken.TOKEN_PROGRAM_ID,
         fromTokenAccount.address,
-        publicKey,
+        toTokenAccount.address,
         fromWallet.publicKey,
         [],
         1
       )
     );
 
-    // Sign transaction, broadcast, and confirm
-    var signature = await web3.sendAndConfirmTransaction(
+    // // Sign transaction, broadcast, and confirm
+    const signature = await web3.sendAndConfirmTransaction(
       connection,
       transaction,
       [fromWallet],
