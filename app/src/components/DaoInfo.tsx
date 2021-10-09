@@ -25,6 +25,7 @@ export const DaoInfo: FC = () => {
             label="Token Symbol"
             variant="outlined"
           />
+          <TextField id="token-symbol" label="Decimals" variant="outlined" />
         </Stack>
       </CardContent>
     </Card>
