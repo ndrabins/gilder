@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utilities/theme";
 import Box from "@mui/material/Box";
-import { Routes } from "./Routes";
+import { NavRoutes } from "./Routes";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -22,7 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Routes />
+      <NavRoutes />
     </ThemeProvider>
   );
 }

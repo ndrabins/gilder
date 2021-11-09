@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { AppMenu, WalletWrapper } from "./components";
 import { GildCreation, Dashboard } from "./pages";
 import Box from "@mui/material/Box";
@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 // 2. Creation Flow (select guild and authorize bot);
 // 3. Dashboard of users
 
-export const Routes = () => {
+export const NavRoutes = () => {
   return (
     <Router>
       <WalletWrapper>
@@ -21,14 +21,10 @@ export const Routes = () => {
           }}
         >
           <AppMenu />
-          <Switch>
-            <Route exact path="/dashboard/:id">
-              <Dashboard />
-            </Route>
-            <Route path="/">
-              <GildCreation />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<GildCreation />} />
+          </Routes>
         </Box>
       </WalletWrapper>
     </Router>
