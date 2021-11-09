@@ -1,7 +1,5 @@
 import React, { useCallback } from "react";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import { Box, Stack, Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AddUsers, DaoInfo } from "../components";
 import { useAppSelector, useAppDispatch } from "../store/hooks";

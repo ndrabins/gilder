@@ -1,10 +1,4 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import { Box, Typography } from "@mui/material";
 import { Drawer } from "../components";
 
 export const Dashboard = () => {

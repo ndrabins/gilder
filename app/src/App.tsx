@@ -1,7 +1,5 @@
-import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utilities/theme";
-import Box from "@mui/material/Box";
 import { NavRoutes } from "./Routes";
 import { createGlobalStyle } from "styled-components";
 
