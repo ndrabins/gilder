@@ -16,6 +16,20 @@ const gilderBlue = {
   900: "#164E63",
 };
 
+const gilderGold = {
+  50: "#FFFCEE",
+  100: "#F3F0DC",
+  200: "#F2EECE",
+  300: "#ECE7BF",
+  400: "#E8E6BA",
+  main: "#E8E6BA",
+  500: "#E1DFAF",
+  600: "#D1CF99",
+  700: "#BEBB76",
+  800: "#AEAB63",
+  900: "#928E3D",
+};
+
 // const warmGray = {
 //   50: "#fafaf9",
 //   100: "#f5f5f4",

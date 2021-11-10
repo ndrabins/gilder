@@ -1,8 +1,5 @@
-import React from "react";
-import Stack from "@mui/material/Stack";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
+import { Stack, Avatar, Typography, Tooltip } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 interface DiscordUser {
   username: string;
@@ -26,6 +23,8 @@ export const DiscordUserAvatar = ({
   discriminator,
   showName = true,
 }: DiscordAvatarUserProps) => {
+  const theme = useTheme();
+
   return (
     <Stack
       sx={{ justifyContent: "center", alignItems: "center" }}
@@ -36,7 +35,7 @@ export const DiscordUserAvatar = ({
           <Avatar
             alt={`${username}`}
             src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=128%22`}
-            sx={{ mr: 1, border: "2px solid gray" }}
+            sx={{ mr: 1, border: `2px solid ${theme.palette.secondary.dark}` }}
           />
         </Tooltip>
       ) : (

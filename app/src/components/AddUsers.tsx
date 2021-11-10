@@ -10,7 +10,7 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import RemoveIcon from "@mui/icons-material/RemoveCircle";
 import AddIcon from "@mui/icons-material/Add";
 import { DiscordUserAvatar } from "../components";
 
@@ -61,13 +61,13 @@ export const AddUsers: FC = () => {
   // TODO add section for discord connection.
 
   return (
-    <Stack sx={{ minWidth: 275, flex: 2 }} spacing={3}>
-      <Card>
+    <Stack sx={{ minWidth: 275, flex: 1 }} flexDirection="row">
+      <Card sx={{ p: 1, mr: 2, flex: "2" }}>
         <CardContent>
-          <Typography variant="h5" color="text.secondary" gutterBottom>
+          <Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
             Manual User Entry
           </Typography>
-          <Divider sx={{ mb: 2 }} />
+          <Divider sx={{ mb: 2, borderColor: "secondary.600" }} />
 
           {membersAdded.map((member, index) => (
             <Stack direction="row" sx={{ mb: 2 }} key={index}>
@@ -75,22 +75,32 @@ export const AddUsers: FC = () => {
                 id="wallet-key"
                 label="Wallet Key"
                 variant="outlined"
-                sx={{ flexGrow: 3, mr: 1, ml: 1 }}
+                placeholder="Public key of wallet."
+                sx={{ flexGrow: 3, mr: 1 }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
 
               <TextField
                 id="token-amount"
                 label="Token Amount"
                 variant="outlined"
-                sx={{ flexGrow: 1, mr: 2, ml: 1 }}
+                sx={{ flexGrow: 1, mr: 2 }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder="# tokens sent."
+                type="number"
               />
 
               <Stack justifyContent="center" alignItems="center">
                 <IconButton
                   aria-label="delete"
                   onClick={() => onDeleteClick(index)}
+                  size="small"
                 >
-                  <DeleteIcon />
+                  <RemoveIcon />
                 </IconButton>
               </Stack>
             </Stack>
@@ -103,12 +113,14 @@ export const AddUsers: FC = () => {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card
+        sx={{ p: 1, flexGrow: 1, width: "100%", overflow: "auto", flex: 1 }}
+      >
         <CardContent>
-          <Typography variant="h5" gutterBottom color="text.secondary">
+          <Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
             Discord Users
           </Typography>
-          <Divider sx={{ mb: 2 }} />
+          <Divider sx={{ mb: 2, borderColor: "secondary.600" }} />
 
           {discordMembers.map((member, index) => (
             <Stack direction="row" sx={{ mb: 2 }} key={index}>
@@ -125,14 +137,22 @@ export const AddUsers: FC = () => {
                 id="wallet-key"
                 label="Wallet Key"
                 variant="outlined"
-                sx={{ flexGrow: 3, mr: 1, ml: 1 }}
+                sx={{ mr: 1 }}
+                placeholder="Public key of wallet."
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
 
               <TextField
                 id="token-amount"
                 label="Token Amount"
                 variant="outlined"
-                sx={{ flexGrow: 1, mr: 2, ml: 1 }}
+                type="number"
+                sx={{ mr: 2 }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
 
               <Stack justifyContent="center" alignItems="center">
@@ -140,7 +160,7 @@ export const AddUsers: FC = () => {
                   aria-label="delete"
                   onClick={() => onDeleteClick(index)}
                 >
-                  <DeleteIcon />
+                  <RemoveIcon />
                 </IconButton>
               </Stack>
             </Stack>

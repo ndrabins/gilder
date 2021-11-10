@@ -57,7 +57,7 @@ export const GildCreation = () => {
   console.log(theme.palette);
 
   return (
-    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "transparent" }}>
+    <Box sx={{ flexGrow: 2, p: 6 }}>
       <Stack
         direction="row"
         alignItems="center"
@@ -79,7 +79,7 @@ export const GildCreation = () => {
           </LoadingButton>
         </Box>
       </Stack>
-      <Stack direction="row">
+      <Stack direction="column">
         <DaoInfo />
         <AddUsers />
       </Stack>
