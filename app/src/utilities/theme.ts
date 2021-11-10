@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { teal, blueGrey, yellow } from "@mui/material/colors";
+import { yellow } from "@mui/material/colors";
 import darkScrollbar from "@mui/material/darkScrollbar";
 
 const gilderBlue = {
@@ -16,20 +16,46 @@ const gilderBlue = {
   900: "#164E63",
 };
 
+// const warmGray = {
+//   50: "#fafaf9",
+//   100: "#f5f5f4",
+//   200: "#e7e5e4 ",
+//   300: "#d6d3d1 ",
+//   400: "#a8a29e ",
+//   main: "#78716c ",
+//   500: "#78716c ",
+//   600: "#57534e ",
+//   700: "#44403c ",
+//   800: "#292524 ",
+//   900: "#1c1917 ",
+// };
+
+// const gray = {
+//   100: "#f7fafc",
+//   200: "#edf2f7",
+//   300: "#e2e8f0",
+//   400: "#cbd5e0",
+//   500: "#a0aec0",
+//   600: "#718096",
+//   700: "#4a5568",
+//   800: "#2d3748",
+//   900: "#1a202c",
+// };
+
 // possible blue
-const gilderSky = {
-  50: "#F0F9FF",
-  100: "#E0F2FE",
-  200: "#BAE6FD",
-  300: "#7DD3FC",
-  400: "#38BDF8",
-  500: "#0EA5E9",
-  600: "#0284C7",
-  main: "#0284C7",
-  700: "#0369A1",
-  800: "#075985",
-  900: "#0C4A6E",
-};
+// const gilderSky = {
+//   50: "#F0F9FF",
+//   100: "#E0F2FE",
+//   200: "#BAE6FD",
+//   300: "#7DD3FC",
+//   400: "#38BDF8",
+//   500: "#0EA5E9",
+//   600: "#0284C7",
+//   main: "#0284C7",
+//   700: "#0369A1",
+//   800: "#075985",
+//   900: "#0C4A6E",
+// };
 
 export const theme = createTheme({
   palette: {

@@ -1,18 +1,17 @@
 import React, { FC, useState, useEffect } from "react";
 import { useAppSelector } from "../store/hooks";
 import { RootState } from "../store/store";
-import styled from "styled-components";
-import Card from "@mui/material/Card";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import {
+  TextField,
+  Divider,
+  Card,
+  Stack,
+  CardContent,
+  Typography,
+  IconButton,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-
 import { DiscordUserAvatar } from "../components";
 
 interface Member {
@@ -65,14 +64,10 @@ export const AddUsers: FC = () => {
     <Stack sx={{ minWidth: 275, flex: 2 }} spacing={3}>
       <Card>
         <CardContent>
-          <Typography
-            variant="h5"
-            sx={{ mb: 2 }}
-            color="text.secondary"
-            gutterBottom
-          >
+          <Typography variant="h5" color="text.secondary" gutterBottom>
             Manual User Entry
           </Typography>
+          <Divider sx={{ mb: 2 }} />
 
           {membersAdded.map((member, index) => (
             <Stack direction="row" sx={{ mb: 2 }} key={index}>
@@ -110,14 +105,10 @@ export const AddUsers: FC = () => {
 
       <Card>
         <CardContent>
-          <Typography
-            variant="h5"
-            sx={{ mb: 2 }}
-            color="text.secondary"
-            gutterBottom
-          >
+          <Typography variant="h5" gutterBottom color="text.secondary">
             Discord Users
           </Typography>
+          <Divider sx={{ mb: 2 }} />
 
           {discordMembers.map((member, index) => (
             <Stack direction="row" sx={{ mb: 2 }} key={index}>

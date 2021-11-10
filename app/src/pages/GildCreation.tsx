@@ -8,9 +8,11 @@ import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Keypair, SystemProgram, Transaction } from "@solana/web3.js";
 import { mintToken } from "../slices/web3Slice";
+import { useTheme } from "@mui/material/styles";
 
 export const GildCreation = () => {
   const user = useAppSelector((state: RootState) => state.discord.user);
+  const theme = useTheme();
   const mintStatus = useAppSelector(
     (state: RootState) => state.web3.mintStatus
   );
@@ -52,8 +54,10 @@ export const GildCreation = () => {
     dispatch(mintToken({ publicKey, connection }));
   };
 
+  console.log(theme.palette);
+
   return (
-    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "black" }}>
+    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "transparent" }}>
       <Stack
         direction="row"
         alignItems="center"
@@ -67,6 +71,9 @@ export const GildCreation = () => {
             onClick={testMintToken}
             color="secondary"
             loading={mintStatus === "loading"}
+            sx={{
+              background: `linear-gradient(135deg, ${theme.palette.secondary.light},  ${theme.palette.secondary.dark})`,
+            }}
           >
             Create DAO
           </LoadingButton>

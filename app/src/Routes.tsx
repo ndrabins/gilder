@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { AppMenu, WalletWrapper } from "./components";
 import { GildCreation, Dashboard } from "./pages";
-import Box from "@mui/material/Box";
+import { Stack } from "@mui/material";
 
 // 1. Authentication (discord + wallet)
 // Skip discord, can't select guild
@@ -13,9 +13,9 @@ export const NavRoutes = () => {
   return (
     <Router>
       <WalletWrapper>
-        <Box
+        <Stack
           sx={{
-            bgcolor: "black",
+            bgcolor: "#18181B",
             height: "100%",
             flexDirection: "column",
           }}
@@ -25,7 +25,7 @@ export const NavRoutes = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<GildCreation />} />
           </Routes>
-        </Box>
+        </Stack>
       </WalletWrapper>
     </Router>
   );

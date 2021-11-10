@@ -23,11 +23,7 @@ export const AppMenu: FC = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-      }}
-    >
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <Stack
