@@ -54,10 +54,8 @@ export const GildCreation = () => {
     dispatch(mintToken({ publicKey, connection }));
   };
 
-  console.log(theme.palette);
-
   return (
-    <Box sx={{ flexGrow: 2, p: 6 }}>
+    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "#18181B", overflowY: "auto" }}>
       <Stack
         direction="row"
         alignItems="center"
@@ -68,7 +66,7 @@ export const GildCreation = () => {
         <Box>
           <LoadingButton
             variant="contained"
-            onClick={testMintToken}
+            // onClick={testMintToken}
             color="secondary"
             loading={mintStatus === "loading"}
             sx={{

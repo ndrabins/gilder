@@ -25,6 +25,8 @@ export const DiscordUserAvatar = ({
 }: DiscordAvatarUserProps) => {
   const theme = useTheme();
 
+  console.log("avatar", id, avatar);
+
   return (
     <Stack
       sx={{ justifyContent: "center", alignItems: "center" }}
@@ -35,7 +37,10 @@ export const DiscordUserAvatar = ({
           <Avatar
             alt={`${username}`}
             src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=128%22`}
-            sx={{ mr: 1, border: `2px solid ${theme.palette.secondary.dark}` }}
+            sx={{
+              mr: 1,
+              border: `2px solid ${theme.palette.background.paper}`,
+            }}
           />
         </Tooltip>
       ) : (
