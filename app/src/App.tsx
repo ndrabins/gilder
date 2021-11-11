@@ -20,6 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <div />
       <NavRoutes />
     </ThemeProvider>
   );
