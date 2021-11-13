@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState, AppThunk } from "../store/store";
-import { fetchDaosRequest } from "../api/dao";
+import { fetchDaosRequest, fetchDaoTransactionsRequest } from "../api/dao";
 import {
   Keypair,
   SystemProgram,
@@ -16,11 +16,13 @@ export interface daoState {
   daos: any;
   daoData: any;
   daoStatus: "idle" | "loading" | "failed";
+  transactions: any;
 }
 
 const initialState: daoState = {
   daos: [],
   daoData: null,
+  transactions: [],
   daoStatus: "idle",
 };
 
@@ -28,6 +30,13 @@ export const fetchDaos = createAsyncThunk(
   "dao/fetchDaos",
   async (_: any, { getState }) => {
     return fetchDaosRequest();
+  }
+);
+
+export const fetchTransactions = createAsyncThunk(
+  "dao/fetchTransactions",
+  async (_: any, { getState }) => {
+    return fetchDaoTransactionsRequest();
   }
 );
 
@@ -55,6 +64,9 @@ export const daoSlice = createSlice({
         if (state.daos) {
           state.daoData = state.daos[0];
         }
+      })
+      .addCase(fetchTransactions.fulfilled, (state, action: any) => {
+        state.transactions = action.payload;
       });
   },
 });

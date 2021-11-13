@@ -14,7 +14,6 @@ import { useTheme } from "@mui/material/styles";
 import { RootState } from "../store/store";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import PhoneIcon from "@mui/icons-material/Phone";
 
 export const DaoSwitcher: FC = () => {
   const dispatch = useAppDispatch();
@@ -22,10 +21,6 @@ export const DaoSwitcher: FC = () => {
   const [switcherValue, setSwitcherValue] = useState(0);
 
   const theme = useTheme();
-
-  useEffect(() => {
-    dispatch(fetchDaos(null));
-  }, []);
 
   const selectDao = (event: any, index: number) => {
     // this causes infinite loop for some reason.. fix..
@@ -46,6 +41,7 @@ export const DaoSwitcher: FC = () => {
         pt: 2,
         bgcolor: "grey.900",
         overflowY: "auto",
+        overflowX: "hidden",
       }}
       alignItems="center"
     >

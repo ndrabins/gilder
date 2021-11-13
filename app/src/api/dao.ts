@@ -8,6 +8,7 @@ import {
 import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
+import axios from "axios";
 
 // governance -> homeView.tsx has translation
 
@@ -81,4 +82,29 @@ export const fetchDaosRequest = async () => {
   }
 
   return rawAccounts;
+};
+
+// get details of account
+export const getAccountInfo = async () => {
+  return null;
+};
+
+export const fetchDaoTransactionsRequest = async () => {
+  const key = "2F96LbxCv2VdmAy3psyBmfwjULU5vJmnoaaW8AKAuKjd";
+
+  // const solanaApiUrl = "https://api.devnet.solana.com/";
+  const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+  // no idea what this is yet.
+  const data = {
+    id: 1, //not sure what goes here
+    jsonrpc: "2.0",
+    method: "getConfirmedSignaturesForAddress2",
+    // index 0: public key, index 1: filter object
+    // filter object { before?: <transactionId, limit: <number of items to get>}
+    params: [key, { limit: 25 }],
+  };
+
+  const response = await axios.post(`${solanaApiUrl}`, data);
+
+  return response.data.result;
 };
