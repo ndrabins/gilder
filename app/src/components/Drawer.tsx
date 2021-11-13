@@ -43,7 +43,12 @@ export const Drawer = () => {
 
   return (
     <Stack
-      sx={{ height: "100%", width: 300, bgcolor: "grey.800" }}
+      sx={{
+        height: "100%",
+        width: 300,
+        bgcolor: "grey.800",
+        minWidth: "300px",
+      }}
       flexDirection="row"
     >
       <Stack

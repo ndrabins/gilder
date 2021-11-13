@@ -1,15 +1,33 @@
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack, Card } from "@mui/material";
 import { Drawer } from "../components";
+import { useAppSelector } from "../store/hooks";
+import { RootState } from "../store/store";
 
 export const Dashboard = (props: any) => {
-  console.log("props", props);
+  const daos = useAppSelector((state: RootState) => state.dao.daos);
+
+  console.log("props", daos);
   return (
     <Stack sx={{ flexGrow: 1 }} flexDirection="row">
       <Drawer />
-      <Stack sx={{ p: 2 }}>
-        <Typography variant="h2" sx={{ color: "grey.100" }}>
+      <Stack
+        sx={{
+          p: 2,
+          width: "100%",
+          overflowY: "auto",
+          background: "transparent",
+        }}
+      >
+        <Typography variant="h5" sx={{ color: "grey.100", mb: 2 }}>
           Dashboard
         </Typography>
+
+        {daos.map((dao: any, index: number) => (
+          <Card sx={{ mb: 1, p: 2, bgcolor: "grey.800" }} key={index}>
+            {" "}
+            {dao?.pubkey}{" "}
+          </Card>
+        ))}
       </Stack>
     </Stack>
   );
