@@ -19,9 +19,12 @@ import AddIcon from "@mui/icons-material/Add";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DiscordLogo from "../static/Discord-Logo-White.svg";
 import styled from "styled-components";
+import { useAppDispatch } from "../store/hooks";
+import { fetchDaos } from "../slices/daoSlice";
 
 export const Drawer = () => {
   const theme = useTheme();
+  const dispatch = useAppDispatch();
 
   const [open, setOpen] = React.useState<boolean>(false);
   const handleDrawerOpen = () => {
@@ -30,6 +33,10 @@ export const Drawer = () => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const onClick = () => {
+    dispatch(fetchDaos("test"));
   };
 
   const selectedNav = "Dashboard";
@@ -51,7 +58,10 @@ export const Drawer = () => {
         <Box sx={{ mb: 2 }}>
           <Avatar src="https://images.unsplash.com/photo-1636378163213-ded48bf09b05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80" />
         </Box>
-        <IconButton sx={{ border: `1px dashed ${theme.palette.grey[500]}` }}>
+        <IconButton
+          sx={{ border: `1px dashed ${theme.palette.grey[500]}` }}
+          onClick={onClick}
+        >
           <AddIcon sx={{ color: `${theme.palette.grey[400]}` }} />
         </IconButton>
       </Stack>
