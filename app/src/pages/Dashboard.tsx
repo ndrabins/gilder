@@ -1,12 +1,16 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 import { Drawer } from "../components";
 
-export const Dashboard = () => {
+export const Dashboard = (props: any) => {
+  console.log("props", props);
   return (
-    <Box sx={{ flexGrow: 1, p: 2 }}>
-      <Typography variant="h2" sx={{ color: "grey.100" }}>
-        Dashboard
-      </Typography>
-    </Box>
+    <Stack sx={{ flexGrow: 1 }} flexDirection="row">
+      <Drawer />
+      <Stack sx={{ p: 2 }}>
+        <Typography variant="h2" sx={{ color: "grey.100" }}>
+          Dashboard
+        </Typography>
+      </Stack>
+    </Stack>
   );
 };

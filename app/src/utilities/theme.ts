@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 import { yellow } from "@mui/material/colors";
 import darkScrollbar from "@mui/material/darkScrollbar";
 
+// https://github.com/tailwindlabs/tailwindcss/blob/b8cda161dd0993083dcef1e2a03988c70be0ce93/src/public/colors.js
 const gilderBlue = {
   50: "#ECFEFF",
   100: "#CFFAFE",
@@ -16,6 +17,21 @@ const gilderBlue = {
   900: "#164E63",
 };
 
+const gray = {
+  50: "#fafafa",
+  100: "#f5f5f5",
+  200: "#e5e5e5",
+  300: "#d4d4d4",
+  400: "#a3a3a3",
+  500: "#737373",
+  main: "#525252",
+  600: "#525252",
+  700: "#404040",
+  800: "#262626",
+  900: "#171717",
+};
+
+// TODO: update this
 const gilderGold = {
   50: "#FFFCEE",
   100: "#F3F0DC",
@@ -30,55 +46,15 @@ const gilderGold = {
   900: "#928E3D",
 };
 
-// const warmGray = {
-//   50: "#fafaf9",
-//   100: "#f5f5f4",
-//   200: "#e7e5e4 ",
-//   300: "#d6d3d1 ",
-//   400: "#a8a29e ",
-//   main: "#78716c ",
-//   500: "#78716c ",
-//   600: "#57534e ",
-//   700: "#44403c ",
-//   800: "#292524 ",
-//   900: "#1c1917 ",
-// };
-
-// const gray = {
-//   100: "#f7fafc",
-//   200: "#edf2f7",
-//   300: "#e2e8f0",
-//   400: "#cbd5e0",
-//   500: "#a0aec0",
-//   600: "#718096",
-//   700: "#4a5568",
-//   800: "#2d3748",
-//   900: "#1a202c",
-// };
-
-// possible blue
-// const gilderSky = {
-//   50: "#F0F9FF",
-//   100: "#E0F2FE",
-//   200: "#BAE6FD",
-//   300: "#7DD3FC",
-//   400: "#38BDF8",
-//   500: "#0EA5E9",
-//   600: "#0284C7",
-//   main: "#0284C7",
-//   700: "#0369A1",
-//   800: "#075985",
-//   900: "#0C4A6E",
-// };
-
 export const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      ...yellow,
-      main: yellow[700],
+      ...gilderGold,
+      main: gilderGold[700],
     },
     secondary: gilderBlue,
+    grey: gray,
   },
   components: {
     MuiCssBaseline: {

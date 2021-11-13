@@ -10,9 +10,11 @@ import { DiscordAuthButton } from "../components";
 import { useAppDispatch } from "../store/hooks";
 import { authorizeDiscordUser } from "../slices/discordSlice";
 import Divider from "@mui/material/Divider";
+import { useTheme } from "@mui/material/styles";
 
 export const AppMenu: FC = () => {
   const dispatch = useAppDispatch();
+  const theme = useTheme();
 
   useEffect(() => {
     // from query string URL after auth with discord
@@ -24,7 +26,10 @@ export const AppMenu: FC = () => {
 
   return (
     <Box>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ zIndex: 2, borderBottom: `1px solid ${theme.palette.grey[900]}` }}
+      >
         <Toolbar>
           <Stack
             spacing={2}

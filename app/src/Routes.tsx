@@ -9,6 +9,15 @@ import { Stack } from "@mui/material";
 // 2. Creation Flow (select guild and authorize bot);
 // 3. Dashboard of users
 
+const TestComponent = (props: any) => {
+  return (
+    <div style={{ height: "400px", width: "400px", background: "red" }}>
+      {" "}
+      {props.value}{" "}
+    </div>
+  );
+};
+
 export const NavRoutes = () => {
   return (
     <Router>
@@ -22,8 +31,8 @@ export const NavRoutes = () => {
         >
           <AppMenu />
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<GildCreation />} />
+            <Route path="dashboard" element={<Dashboard />}></Route>
           </Routes>
         </Stack>
       </WalletWrapper>
