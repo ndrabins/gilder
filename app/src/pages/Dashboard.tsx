@@ -21,7 +21,10 @@ export const Dashboard = (props: any) => {
   }, [daoData]);
 
   return (
-    <Stack sx={{ minHeight: 0, maxHeight: "100%" }} flexDirection="row">
+    <Stack
+      sx={{ minHeight: 0, maxHeight: "100%", height: "100%" }}
+      flexDirection="row"
+    >
       <Drawer />
       <Stack
         sx={{
@@ -57,6 +60,7 @@ export const Dashboard = (props: any) => {
               bgcolor: "grey.900",
               overflowY: "auto",
               maxWidth: "400px",
+              maxHeight: "400px",
             }}
           >
             <Typography gutterBottom variant="h5" sx={{ color: "grey.300" }}>

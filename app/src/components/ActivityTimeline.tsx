@@ -13,6 +13,7 @@ import {
 } from "@mui/lab";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useTheme } from "@mui/material/styles";
 
 dayjs.extend(relativeTime);
 
@@ -20,7 +21,7 @@ const SOLANA_EXPLORER_URL = "https://explorer.solana.com/tx/";
 
 export const ActivityTimeline = (props: any) => {
   const { transactions } = useAppSelector((state: RootState) => state.dao);
-  console.log(transactions);
+  const theme = useTheme();
 
   return (
     <Timeline sx={{ p: 0 }}>
@@ -46,8 +47,8 @@ export const ActivityTimeline = (props: any) => {
               rel="noreferrer"
               sx={{ color: "grey.300", mr: 1 }}
             >
-              {transaction.signature.slice(0, 5)}...
-              {transaction.signature.slice(-5)}
+              {transaction.signature.slice(0, 4)}...
+              {transaction.signature.slice(-4)}
             </Link>
             <Chip
               label={
@@ -55,11 +56,20 @@ export const ActivityTimeline = (props: any) => {
                   ? "Success"
                   : "Failed"
               }
-              color={
-                transaction.confirmationStatus === "finalized"
-                  ? "success"
-                  : "error"
-              }
+              sx={{
+                color:
+                  transaction.confirmationStatus === "finalized"
+                    ? // @ts-ignore
+                      theme.palette.success[900]
+                    : // @ts-ignore
+                      theme.palette.error[900],
+                bgcolor:
+                  transaction.confirmationStatus === "finalized"
+                    ? // @ts-ignore
+                      theme.palette.success[400]
+                    : // @ts-ignore
+                      theme.palette.error[500],
+              }}
             />
           </TimelineContent>
         </TimelineItem>

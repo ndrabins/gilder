@@ -89,9 +89,7 @@ export const getAccountInfo = async () => {
   return null;
 };
 
-export const fetchDaoTransactionsRequest = async () => {
-  const key = "2F96LbxCv2VdmAy3psyBmfwjULU5vJmnoaaW8AKAuKjd";
-
+export const fetchDaoTransactionsRequest = async (publicKey: string) => {
   // const solanaApiUrl = "https://api.devnet.solana.com/";
   const solanaApiUrl = "https://api.mainnet-beta.solana.com";
   // no idea what this is yet.
@@ -101,7 +99,7 @@ export const fetchDaoTransactionsRequest = async () => {
     method: "getConfirmedSignaturesForAddress2",
     // index 0: public key, index 1: filter object
     // filter object { before?: <transactionId, limit: <number of items to get>}
-    params: [key, { limit: 25 }],
+    params: [publicKey, { limit: 25 }],
   };
 
   const response = await axios.post(`${solanaApiUrl}`, data);

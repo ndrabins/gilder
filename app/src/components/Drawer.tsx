@@ -28,6 +28,7 @@ export const Drawer = () => {
         bgcolor: "grey.800",
         minWidth: "300px",
         overflowY: "auto",
+        height: "100%",
         minHeight: 0,
       }}
       flexDirection="row"

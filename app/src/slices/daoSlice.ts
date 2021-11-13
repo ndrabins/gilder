@@ -36,7 +36,9 @@ export const fetchDaos = createAsyncThunk(
 export const fetchTransactions = createAsyncThunk(
   "dao/fetchTransactions",
   async (_: any, { getState }) => {
-    return fetchDaoTransactionsRequest();
+    const { dao } = getState() as RootState;
+
+    return fetchDaoTransactionsRequest(dao.daoData.pubkey);
   }
 );
 
