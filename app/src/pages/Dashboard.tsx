@@ -21,13 +21,6 @@ export const Dashboard = (props: any) => {
         <Typography variant="h5" sx={{ color: "grey.100", mb: 2 }}>
           Dashboard
         </Typography>
-
-        {daos.map((dao: any, index: number) => (
-          <Card sx={{ mb: 1, p: 2, bgcolor: "grey.800" }} key={index}>
-            {" "}
-            {dao?.pubkey}{" "}
-          </Card>
-        ))}
       </Stack>
     </Stack>
   );

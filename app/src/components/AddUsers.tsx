@@ -150,7 +150,7 @@ export const AddUsers: FC = () => {
               id="wallet-key"
               label="Wallet Key"
               variant="outlined"
-              placeholder="Public key of wallet."
+              helperText="Public key of wallet."
               sx={{ flexGrow: 3, mr: 1 }}
               InputLabelProps={{
                 shrink: true,
@@ -165,7 +165,7 @@ export const AddUsers: FC = () => {
               InputLabelProps={{
                 shrink: true,
               }}
-              placeholder="# tokens sent."
+              helperText="# tokens sent."
               type="number"
             />
 

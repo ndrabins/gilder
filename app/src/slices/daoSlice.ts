@@ -24,7 +24,7 @@ const initialState: daoState = {
 
 export const fetchDaos = createAsyncThunk(
   "dao/fetchDaos",
-  async (test: any, { getState }) => {
+  async (_: any, { getState }) => {
     return fetchDaosRequest();
   }
 );

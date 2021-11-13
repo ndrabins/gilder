@@ -15,7 +15,7 @@ export const DaoInfo: FC = () => {
         <Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
           DAO Data
         </Typography>
-        <Typography variant="subtitle1" sx={{ color: "grey.600" }} gutterBottom>
+        <Typography variant="subtitle1" sx={{ color: "grey.500" }} gutterBottom>
           This info will be used to determine your token and the specifics
           around how users interact with it as well as your DAO.
         </Typography>
@@ -28,7 +28,7 @@ export const DaoInfo: FC = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder="The name of your discord guild or organization."
+            helperText="The name of your discord guild or organization."
           />
           <TextField
             id="token-amt"
@@ -38,7 +38,7 @@ export const DaoInfo: FC = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder="The total supply of tokens."
+            helperText="The total supply of tokens."
           />
           <TextField
             id="token-symbol"
@@ -47,7 +47,7 @@ export const DaoInfo: FC = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder="Ticker symbol that will be used to represent your token. E.g. 'Doge'"
+            helperText="Ticker symbol that will be used to represent your token. E.g. 'Doge'"
           />
           <TextField
             id="token-symbol"
@@ -56,7 +56,7 @@ export const DaoInfo: FC = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder="The amount of places down a token can be broken into."
+            helperText="The amount of places down a token can be broken into."
           />
         </Stack>
       </CardContent>

@@ -1,75 +1,38 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
 import {
-  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Stack,
-  Avatar,
   Box,
   IconButton,
+  Chip,
 } from "@mui/material";
+import { DaoSwitcher } from "./DaoSwitcher";
 import HomeIcon from "@mui/icons-material/Home";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import GroupIcon from "@mui/icons-material/Group";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
-import AddIcon from "@mui/icons-material/Add";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DiscordLogo from "../static/Discord-Logo-White.svg";
 import styled from "styled-components";
-import { useAppDispatch } from "../store/hooks";
-import { fetchDaos } from "../slices/daoSlice";
 
 export const Drawer = () => {
-  const theme = useTheme();
-  const dispatch = useAppDispatch();
-
-  const [open, setOpen] = React.useState<boolean>(false);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const onClick = () => {
-    dispatch(fetchDaos("test"));
-  };
-
   const selectedNav = "Dashboard";
 
   return (
     <Stack
       sx={{
-        height: "100%",
         width: 300,
         bgcolor: "grey.800",
         minWidth: "300px",
+        overflowY: "auto",
+        minHeight: 0,
       }}
       flexDirection="row"
     >
-      <Stack
-        sx={{
-          height: "100%",
-          minWidth: 64,
-          pt: 2,
-          bgcolor: "grey.900",
-        }}
-        alignItems="center"
-      >
-        <Box sx={{ mb: 2 }}>
-          <Avatar src="https://images.unsplash.com/photo-1636378163213-ded48bf09b05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80" />
-        </Box>
-        <IconButton
-          sx={{ border: `1px dashed ${theme.palette.grey[500]}` }}
-          onClick={onClick}
-        >
-          <AddIcon sx={{ color: `${theme.palette.grey[400]}` }} />
-        </IconButton>
-      </Stack>
+      <DaoSwitcher />
       <Stack
         sx={{ width: "100%", color: "grey.100", p: 1 }}
         justifyContent="space-between"

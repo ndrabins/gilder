@@ -27,6 +27,7 @@ export const NavRoutes = () => {
             bgcolor: "#18181B",
             height: "100%",
             flexDirection: "column",
+            maxHeight: "100vh",
           }}
         >
           <AppMenu />
