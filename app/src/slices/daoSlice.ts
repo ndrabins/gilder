@@ -14,11 +14,13 @@ import bs58 from "bs58";
 
 export interface daoState {
   daos: any;
+  daoData: any;
   daoStatus: "idle" | "loading" | "failed";
 }
 
 const initialState: daoState = {
   daos: [],
+  daoData: null,
   daoStatus: "idle",
 };
 
@@ -32,7 +34,12 @@ export const fetchDaos = createAsyncThunk(
 export const daoSlice = createSlice({
   name: "dao",
   initialState,
-  reducers: {},
+  reducers: {
+    selectDao: (state, action: PayloadAction<{ dao: any }>) => {
+      // state.daoData = action.payload;
+      console.log("action", action);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDaos.pending, (state) => {
@@ -44,10 +51,14 @@ export const daoSlice = createSlice({
       .addCase(fetchDaos.fulfilled, (state, action: any) => {
         state.daoStatus = "idle";
         state.daos = action.payload;
+        // select first dao in list for now
+        if (state.daos) {
+          state.daoData = state.daos[0];
+        }
       });
   },
 });
 
-export const {} = daoSlice.actions;
+export const { selectDao } = daoSlice.actions;
 
 export default daoSlice.reducer;

@@ -7,13 +7,13 @@ import {
   Stack,
   Box,
   IconButton,
-  Chip,
 } from "@mui/material";
 import { DaoSwitcher } from "./DaoSwitcher";
-import HomeIcon from "@mui/icons-material/Home";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import GroupIcon from "@mui/icons-material/Group";
-import HowToVoteIcon from "@mui/icons-material/HowToVote";
+import HomeIcon from "@mui/icons-material/HomeRounded";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalanceRounded";
+import GroupIcon from "@mui/icons-material/GroupRounded";
+import HowToVoteIcon from "@mui/icons-material/HowToVoteRounded";
+import ActivityIcon from "@mui/icons-material/FormatListBulletedRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DiscordLogo from "../static/Discord-Logo-White.svg";
 import styled from "styled-components";
@@ -49,7 +49,12 @@ export const Drawer = () => {
             </ListItemIcon>
             <ListItemText primary={"Dashboard"} />
           </ListItem>
-          <ListItem sx={{ pt: 2, pb: 2, borderRadius: 2 }} button key={"Vault"}>
+          <ListItem
+            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
+            button
+            key={"Vault"}
+            disabled
+          >
             <ListItemIcon>
               <AccountBalanceIcon />
             </ListItemIcon>
@@ -59,6 +64,7 @@ export const Drawer = () => {
             sx={{ pt: 2, pb: 2, borderRadius: 2 }}
             button
             key={"Members"}
+            disabled
           >
             <ListItemIcon>
               <GroupIcon />
@@ -69,11 +75,23 @@ export const Drawer = () => {
             sx={{ pt: 2, pb: 2, borderRadius: 2 }}
             button
             key={"Proposals"}
+            disabled
           >
             <ListItemIcon>
               <HowToVoteIcon />
             </ListItemIcon>
             <ListItemText primary={"Proposals"} />
+          </ListItem>
+          <ListItem
+            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
+            button
+            key={"Activity"}
+            disabled
+          >
+            <ListItemIcon>
+              <ActivityIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Activity"} />
           </ListItem>
         </List>
         <Stack

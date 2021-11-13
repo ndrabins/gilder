@@ -9,22 +9,34 @@ import {
   Tooltip,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { fetchDaos } from "../slices/daoSlice";
+import { fetchDaos, selectDao } from "../slices/daoSlice";
 import { useTheme } from "@mui/material/styles";
 import { RootState } from "../store/store";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 export const DaoSwitcher: FC = () => {
   const dispatch = useAppDispatch();
-  const daos = useAppSelector((state: RootState) => state.dao.daos);
-  const theme = useTheme();
+  const { daos, daoData } = useAppSelector((state: RootState) => state.dao);
+  const [switcherValue, setSwitcherValue] = useState(0);
 
-  const [myDaos, setMyDaos] = useState([]);
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(fetchDaos(null));
   }, []);
 
-  const onClick = () => {};
+  const selectDao = (event: any, index: number) => {
+    // this causes infinite loop for some reason.. fix..
+    setSwitcherValue(index);
+    // @ts-ignore
+    // dispatch(selectDao(daos[index]));
+    console.log(index);
+    console.log("selecting", daos[index]);
+  };
+
+  const addDao = () => {};
 
   return (
     <Stack
@@ -40,7 +52,7 @@ export const DaoSwitcher: FC = () => {
       <Tooltip title="Add DAO">
         <IconButton
           sx={{ border: `1px dashed ${theme.palette.grey[500]}`, mb: 2 }}
-          onClick={onClick}
+          onClick={addDao}
         >
           <AddIcon sx={{ color: `${theme.palette.grey[400]}` }} />
         </IconButton>
@@ -57,11 +69,57 @@ export const DaoSwitcher: FC = () => {
       </Box>
 
       {/* Only show 5 for now */}
-      {daos.slice(0, 5).map((dao: any) => (
-        <Box sx={{ mb: 2 }} key={dao.pubkey}>
-          <Avatar>{dao.pubkey.slice(0, 1)}</Avatar>
-        </Box>
-      ))}
+      {daos && daoData && (
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          onChange={selectDao}
+          value={switcherValue}
+          sx={{ pl: 1, pr: 1 }}
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: theme.palette.grey[200],
+              borderRadius: "16px",
+              height: "32px",
+              zIndex: 0,
+              marginTop: "16px",
+              marginBottom: "8px",
+              marginRight: "80px",
+              width: "8px",
+            },
+          }}
+        >
+          {daos.slice(0, 5).map((dao: any, index: number) => (
+            <Tooltip placement="right-end" title={dao.pubkey} key={dao.pubkey}>
+              <Tab
+                value={index}
+                key={index}
+                disableRipple
+                icon={
+                  <Avatar
+                    sx={{
+                      color:
+                        daoData.pubkey === dao.pubkey
+                          ? "secondary.200"
+                          : "grey.300",
+                      bgcolor:
+                        daoData.pubkey === dao.pubkey
+                          ? "secondary.900"
+                          : "grey.800",
+                    }}
+                  >
+                    {" "}
+                    {dao.pubkey.slice(0, 1)}
+                  </Avatar>
+                }
+                sx={{
+                  borderRadius: "100px",
+                }}
+              />
+            </Tooltip>
+          ))}
+        </Tabs>
+      )}
     </Stack>
   );
 };

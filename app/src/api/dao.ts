@@ -26,8 +26,6 @@ export const fetchDaosRequest = async () => {
   // no idea what this is yet.
   const accountType = 1;
 
-  console.log("fetching");
-
   let getProgramAccounts = await fetch(solanaApiUrl, {
     method: "POST",
     headers: {
@@ -82,6 +80,5 @@ export const fetchDaosRequest = async () => {
     } catch (ex) {}
   }
 
-  console.log("raw", rawAccounts);
   return rawAccounts;
 };
