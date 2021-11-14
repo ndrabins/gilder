@@ -17,9 +17,34 @@ import ActivityIcon from "@mui/icons-material/FormatListBulletedRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DiscordLogo from "../static/Discord-Logo-White.svg";
 import styled from "styled-components";
+import { useTheme } from "@mui/material/styles";
+
+const navItems = [
+  {
+    key: "Dashboard",
+    isDisabled: false,
+  },
+  {
+    key: "Vault",
+    isDisabled: true,
+  },
+  {
+    key: "Members",
+    isDisabled: true,
+  },
+  {
+    key: "Proposals",
+    isDisabled: true,
+  },
+  {
+    key: "Activity",
+    isDisabled: true,
+  },
+];
 
 export const Drawer = () => {
   const selectedNav = "Dashboard";
+  const theme = useTheme();
 
   return (
     <Stack
@@ -39,61 +64,34 @@ export const Drawer = () => {
         justifyContent="space-between"
       >
         <List sx={{ pt: 0 }}>
-          <ListItem
-            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
-            button
-            key={"Dashboard"}
-            selected={selectedNav === "Dashboard"}
-          >
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Dashboard"} />
-          </ListItem>
-          <ListItem
-            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
-            button
-            key={"Vault"}
-            disabled
-          >
-            <ListItemIcon>
-              <AccountBalanceIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Vault"} />
-          </ListItem>
-          <ListItem
-            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
-            button
-            key={"Members"}
-            disabled
-          >
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Members"} />
-          </ListItem>
-          <ListItem
-            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
-            button
-            key={"Proposals"}
-            disabled
-          >
-            <ListItemIcon>
-              <HowToVoteIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Proposals"} />
-          </ListItem>
-          <ListItem
-            sx={{ pt: 2, pb: 2, borderRadius: 2 }}
-            button
-            key={"Activity"}
-            disabled
-          >
-            <ListItemIcon>
-              <ActivityIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Activity"} />
-          </ListItem>
+          {navItems.map((item) => (
+            <ListItem
+              // @ts-ignore
+              sx={{
+                pt: 2,
+                pb: 2,
+                borderRadius: 2,
+                background:
+                  selectedNav === item.key &&
+                  // @ts-ignore
+                  `linear-gradient(${theme.palette.secondary[600]}, ${theme.palette.secondary[900]})`,
+              }}
+              // @ts-ignore
+              button
+              key={item.key}
+              selected={selectedNav === item.key}
+              disabled={item.isDisabled}
+            >
+              <ListItemIcon>
+                {item.key === "Dashboard" && <HomeIcon />}
+                {item.key === "Vault" && <AccountBalanceIcon />}
+                {item.key === "Members" && <GroupIcon />}
+                {item.key === "Proposals" && <HowToVoteIcon />}
+                {item.key === "Activity" && <ActivityIcon />}
+              </ListItemIcon>
+              <ListItemText primary={item.key} />
+            </ListItem>
+          ))}
         </List>
         <Stack
           alignItems="center"

@@ -88,14 +88,27 @@ const gilderGold = {
   900: "#928E3D",
 };
 
+const amber = {
+  50: "#fffbeb",
+  100: "#fef3c7",
+  200: "#fde68a",
+  300: "#fcd34d",
+  400: "#fbbf24",
+  500: "#f59e0b",
+  600: "#d97706",
+  700: "#b45309",
+  800: "#92400e",
+  900: "#78350f",
+};
+
 export const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      ...gilderGold,
-      main: gilderGold[700],
+      ...amber,
+      main: amber[400],
     },
-    secondary: gilderBlue,
+    secondary: { ...gilderBlue },
     grey: gray,
     success: {
       ...green,
@@ -106,6 +119,8 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: darkScrollbar(),
+        html: darkScrollbar(),
+        div: darkScrollbar(),
       },
     },
   },

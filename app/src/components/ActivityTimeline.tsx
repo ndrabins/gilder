@@ -60,15 +60,15 @@ export const ActivityTimeline = (props: any) => {
                 color:
                   transaction.confirmationStatus === "finalized"
                     ? // @ts-ignore
-                      theme.palette.success[900]
+                      theme.palette.success[400]
                     : // @ts-ignore
-                      theme.palette.error[900],
+                      theme.palette.error[400],
                 bgcolor:
                   transaction.confirmationStatus === "finalized"
                     ? // @ts-ignore
-                      theme.palette.success[400]
+                      theme.palette.success[900]
                     : // @ts-ignore
-                      theme.palette.error[500],
+                      theme.palette.error[900],
               }}
             />
           </TimelineContent>
