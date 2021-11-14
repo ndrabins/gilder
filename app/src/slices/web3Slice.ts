@@ -9,17 +9,20 @@ import {
 } from "@solana/web3.js";
 import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
+import { getTokenListRequest } from "../api/web3";
 
 // TODO: fix ts errors in formdata on responess
 
 export interface Web3State {
   walletKey: string;
   mintStatus: string;
+  tokenList: Array<any>;
 }
 
 const initialState: Web3State = {
   walletKey: "",
   mintStatus: "idle",
+  tokenList: [],
 };
 
 interface IMintToken {
@@ -28,7 +31,7 @@ interface IMintToken {
 }
 
 export const mintToken = createAsyncThunk(
-  "wen3/mintToken",
+  "web3/mintToken",
   async ({ publicKey, connection }: IMintToken) => {
     if (!publicKey) {
       console.log("no public key", publicKey);
@@ -101,6 +104,10 @@ export const mintToken = createAsyncThunk(
   }
 );
 
+export const getTokenList = createAsyncThunk("web3/getTokenList", async () => {
+  return getTokenListRequest();
+});
+
 export const web3Slice = createSlice({
   name: "web3",
   initialState,
@@ -117,6 +124,9 @@ export const web3Slice = createSlice({
       })
       .addCase(mintToken.fulfilled, (state, action: any) => {
         state.mintStatus = "idle";
+      })
+      .addCase(getTokenList.fulfilled, (state, action: any) => {
+        state.tokenList = action.payload;
       });
   },
 });

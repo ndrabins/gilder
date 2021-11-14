@@ -4,6 +4,7 @@ import { Drawer } from "../components";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { RootState } from "../store/store";
 import { fetchDaos, fetchTransactions } from "../slices/daoSlice";
+import { getTokenList } from "../slices/web3Slice";
 import { ActivityTimeline } from "../components";
 
 export const Dashboard = (props: any) => {
@@ -12,6 +13,7 @@ export const Dashboard = (props: any) => {
 
   useEffect(() => {
     dispatch(fetchDaos(null));
+    dispatch(getTokenList());
   }, []);
 
   useEffect(() => {
