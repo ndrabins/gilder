@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store/store";
-import { fetchDaosRequest, fetchDaoTransactionsRequest } from "../api/dao";
+import {
+  fetchDaosRequest,
+  fetchDaoTransactionsRequest,
+  createDaoRequest,
+} from "../api/dao";
 import { getTokensOfAccountRequest } from "../api/web3";
 
 export interface daoState {
@@ -39,6 +43,14 @@ export const getDaoTokens = createAsyncThunk(
   "dao/getDaoTokens",
   async (publicKey: string) => {
     return getTokensOfAccountRequest(publicKey);
+  }
+);
+
+//
+export const createDao = createAsyncThunk(
+  "dao/createDao",
+  async (publicKey: string) => {
+    return createDaoRequest();
   }
 );
 

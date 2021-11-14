@@ -1,17 +1,12 @@
-import {
-  Keypair,
-  SystemProgram,
-  Transaction,
-  PublicKey,
-  Connection,
-} from "@solana/web3.js";
+import { PublicKey, TransactionInstruction } from "@solana/web3.js";
+
 import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
 import axios from "axios";
 
-// const solanaApiUrl = "https://api.devnet.solana.com/";
-const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+const solanaApiUrl = "https://api.devnet.solana.com/";
+// const solanaApiUrl = "https://api.mainnet-beta.solana.com";
 
 // governance -> homeView.tsx has translation
 
@@ -60,7 +55,6 @@ export const fetchDaosRequest = async () => {
   });
 
   const rawAccounts = (await getProgramAccounts.json())["result"];
-
   let accounts: { [pubKey: string]: any } = {};
 
   for (let rawAccount of rawAccounts) {
@@ -116,4 +110,14 @@ export const fetchDao = async (publicKey: string) => {
   const response = await axios.post(`${solanaApiUrl}`, data);
 
   return response.data.result;
+};
+
+export const createDaoRequest = async () => {
+  // Args:
+  // { connection, wallet, programId, programVersion?, walletPubkey }
+  // name: string // of dao
+  // communityMint: PublicKey,
+  // councileMint?: PublicKey | unde
+  // await createRealm
+  // sendTransaction
 };

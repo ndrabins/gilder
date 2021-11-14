@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { AddUsers, DaoInfo } from "../components";
+import { AddUsers, DaoInfo } from ".";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { RootState } from "../store/store";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";

@@ -10,3 +10,5 @@ export * from "./DaoInfo";
 export * from "./WalletWrapper";
 export * from "./ActivityTimeline";
 export * from "./VaultCardContent";
+export * from "./AddDaoDialog";
+export * from "./GildCreation";

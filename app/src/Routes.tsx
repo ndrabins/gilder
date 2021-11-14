@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { AppMenu, WalletWrapper } from "./components";
-import { GildCreation, Dashboard } from "./pages";
+import { Dashboard } from "./pages";
 import { Stack } from "@mui/material";
 
 // 1. Authentication (discord + wallet)

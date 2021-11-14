@@ -7,18 +7,20 @@ import {
   IconButton,
   Avatar,
   Tooltip,
+  Tabs,
+  Tab,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { fetchDaos, selectDao } from "../slices/daoSlice";
+import { selectDao } from "../slices/daoSlice";
 import { useTheme } from "@mui/material/styles";
 import { RootState } from "../store/store";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import { AddDaoDialog } from "./AddDaoDialog";
 
 export const DaoSwitcher: FC = () => {
   const dispatch = useAppDispatch();
   const { daos, daoData } = useAppSelector((state: RootState) => state.dao);
   const [switcherValue, setSwitcherValue] = useState(0);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const theme = useTheme();
 
@@ -29,7 +31,9 @@ export const DaoSwitcher: FC = () => {
     dispatch(selectDao({ dao: selectedDao }));
   };
 
-  const addDao = () => {};
+  const openModal = () => {
+    setDialogOpen(true);
+  };
 
   return (
     <Stack
@@ -46,11 +50,12 @@ export const DaoSwitcher: FC = () => {
       <Tooltip title="Add DAO">
         <IconButton
           sx={{ border: `1px dashed ${theme.palette.grey[500]}`, mb: 2 }}
-          onClick={addDao}
+          onClick={openModal}
         >
           <AddIcon sx={{ color: `${theme.palette.grey[400]}` }} />
         </IconButton>
       </Tooltip>
+      <AddDaoDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
       <Box sx={{ pl: 1, pr: 1, width: "100%" }}>
         <Divider
           sx={{

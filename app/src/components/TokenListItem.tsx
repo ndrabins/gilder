@@ -22,7 +22,9 @@ export const TokenListItem = (props: TokenListItemProps) => {
   return (
     <Stack flexDirection="row" alignItems="center" sx={{ p: 2 }}>
       <Stack flexDirection="row" alignItems="center" sx={{ width: "100%" }}>
-        <Avatar src={token.logoURI} sx={{ mr: 1 }} />
+        <Avatar src={token.logoURI} sx={{ mr: 1 }}>
+          {token.logoURI}
+        </Avatar>
         <Typography> {token.name} </Typography>
       </Stack>
       <Stack>
