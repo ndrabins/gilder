@@ -47,8 +47,7 @@ export const daoSlice = createSlice({
   initialState,
   reducers: {
     selectDao: (state, action: PayloadAction<{ dao: any }>) => {
-      // state.daoData = action.payload;
-      console.log("action", action);
+      state.daoData = action.payload.dao;
     },
   },
   extraReducers: (builder) => {

@@ -22,13 +22,11 @@ export const DaoSwitcher: FC = () => {
 
   const theme = useTheme();
 
-  const selectDao = (event: any, index: number) => {
-    // this causes infinite loop for some reason.. fix..
+  const clickDao = (event: any, index: number) => {
     setSwitcherValue(index);
+    const selectedDao = daos[index];
     // @ts-ignore
-    // dispatch(selectDao(daos[index]));
-    console.log(index);
-    console.log("selecting", daos[index]);
+    dispatch(selectDao({ dao: selectedDao }));
   };
 
   const addDao = () => {};
@@ -69,7 +67,7 @@ export const DaoSwitcher: FC = () => {
         <Tabs
           orientation="vertical"
           variant="scrollable"
-          onChange={selectDao}
+          onChange={clickDao}
           value={switcherValue}
           sx={{ pl: 1, pr: 1 }}
           TabIndicatorProps={{

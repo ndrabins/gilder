@@ -18,7 +18,6 @@ interface TokenListItemProps {
 
 export const TokenListItem = (props: TokenListItemProps) => {
   const { token, amount } = props;
-  console.log("token", token);
 
   return (
     <Stack flexDirection="row" alignItems="center" sx={{ p: 2 }}>
