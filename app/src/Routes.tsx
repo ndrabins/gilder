@@ -32,8 +32,7 @@ export const NavRoutes = () => {
         >
           <AppMenu />
           <Routes>
-            <Route path="/" element={<GildCreation />} />
-            <Route path="dashboard" element={<Dashboard />}></Route>
+            <Route path="/" element={<Dashboard />}></Route>
           </Routes>
         </Stack>
       </WalletWrapper>

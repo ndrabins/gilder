@@ -1,22 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState, AppThunk } from "../store/store";
+import { RootState } from "../store/store";
 import { fetchDaosRequest, fetchDaoTransactionsRequest } from "../api/dao";
-import {
-  Keypair,
-  SystemProgram,
-  Transaction,
-  PublicKey,
-  Connection,
-} from "@solana/web3.js";
-import * as web3 from "@solana/web3.js";
-import * as splToken from "@solana/spl-token";
-import bs58 from "bs58";
+import { getTokensOfAccountRequest } from "../api/web3";
 
 export interface daoState {
   daos: any;
   daoData: any;
   daoStatus: "idle" | "loading" | "failed";
   transactions: any;
+  daoTokens: [];
 }
 
 const initialState: daoState = {
@@ -24,6 +16,7 @@ const initialState: daoState = {
   daoData: null,
   transactions: [],
   daoStatus: "idle",
+  daoTokens: [],
 };
 
 export const fetchDaos = createAsyncThunk(
@@ -39,6 +32,13 @@ export const fetchTransactions = createAsyncThunk(
     const { dao } = getState() as RootState;
 
     return fetchDaoTransactionsRequest(dao.daoData.pubkey);
+  }
+);
+
+export const getDaoTokens = createAsyncThunk(
+  "dao/getDaoTokens",
+  async (publicKey: string) => {
+    return getTokensOfAccountRequest(publicKey);
   }
 );
 
@@ -66,6 +66,9 @@ export const daoSlice = createSlice({
         if (state.daos) {
           state.daoData = state.daos[0];
         }
+      })
+      .addCase(getDaoTokens.fulfilled, (state, action: any) => {
+        state.daoTokens = action.payload;
       })
       .addCase(fetchTransactions.fulfilled, (state, action: any) => {
         state.transactions = action.payload;

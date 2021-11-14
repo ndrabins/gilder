@@ -10,6 +10,9 @@ import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
 import axios from "axios";
 
+// const solanaApiUrl = "https://api.devnet.solana.com/";
+const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+
 // governance -> homeView.tsx has translation
 
 // squads
@@ -21,8 +24,7 @@ export const fetchDaosRequest = async () => {
   const programId = "GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw";
   const programPk = new PublicKey(programId);
   // TODO: replace this with what network wallet is on
-  // const solanaApiUrl = "https://api.devnet.solana.com/";
-  const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+
   const filters = [] as Array<any>;
   // no idea what this is yet.
   const accountType = 1;
@@ -84,14 +86,23 @@ export const fetchDaosRequest = async () => {
   return rawAccounts;
 };
 
-// get details of account
-export const getAccountInfo = async () => {
-  return null;
+export const fetchDaoTransactionsRequest = async (publicKey: string) => {
+  // no idea what this is yet.
+  const data = {
+    id: 1, //not sure what goes here
+    jsonrpc: "2.0",
+    method: "getConfirmedSignaturesForAddress2",
+    // index 0: public key, index 1: filter object
+    // filter object { before?: <transactionId, limit: <number of items to get>}
+    params: [publicKey, { limit: 25 }],
+  };
+
+  const response = await axios.post(`${solanaApiUrl}`, data);
+
+  return response.data.result;
 };
 
-export const fetchDaoTransactionsRequest = async (publicKey: string) => {
-  // const solanaApiUrl = "https://api.devnet.solana.com/";
-  const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+export const fetchDao = async (publicKey: string) => {
   // no idea what this is yet.
   const data = {
     id: 1, //not sure what goes here

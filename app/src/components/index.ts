@@ -9,3 +9,4 @@ export * from "./AddUsers";
 export * from "./DaoInfo";
 export * from "./WalletWrapper";
 export * from "./ActivityTimeline";
+export * from "./VaultCardContent";

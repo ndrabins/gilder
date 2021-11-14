@@ -9,7 +9,7 @@ import {
 } from "@solana/web3.js";
 import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
-import { getTokenListRequest } from "../api/web3";
+import { getTokenListRequest, getTokensOfAccountRequest } from "../api/web3";
 
 // TODO: fix ts errors in formdata on responess
 
@@ -107,6 +107,13 @@ export const mintToken = createAsyncThunk(
 export const getTokenList = createAsyncThunk("web3/getTokenList", async () => {
   return getTokenListRequest();
 });
+
+export const getTokensOfAccount = createAsyncThunk(
+  "web3/getTokensOfAccount",
+  async (publicKey: string) => {
+    return getTokensOfAccountRequest(publicKey);
+  }
+);
 
 export const web3Slice = createSlice({
   name: "web3",

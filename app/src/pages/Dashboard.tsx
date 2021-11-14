@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { Box, Typography, Stack, Card, Divider } from "@mui/material";
-import { Drawer } from "../components";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { RootState } from "../store/store";
-import { fetchDaos, fetchTransactions } from "../slices/daoSlice";
+import { fetchDaos, fetchTransactions, getDaoTokens } from "../slices/daoSlice";
 import { getTokenList } from "../slices/web3Slice";
-import { ActivityTimeline } from "../components";
+import { Drawer, ActivityTimeline, VaultCardContent } from "../components";
 
 export const Dashboard = (props: any) => {
   const { daoData } = useAppSelector((state: RootState) => state.dao);
@@ -19,6 +18,8 @@ export const Dashboard = (props: any) => {
   useEffect(() => {
     if (daoData?.pubkey) {
       dispatch(fetchTransactions(null));
+      dispatch(getDaoTokens(daoData.pubkey));
+      // dispatch(getDaoTokens("5rWb6R9bC5LZ6RuGQXLdLhxWW6F2418nrSMUnSduUHPr"));
     }
   }, [daoData]);
 
@@ -53,6 +54,7 @@ export const Dashboard = (props: any) => {
               Vault
             </Typography>
             <Divider />
+            <VaultCardContent />
           </Card>
           <Card
             sx={{
