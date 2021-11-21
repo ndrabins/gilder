@@ -1,12 +1,16 @@
-import { PublicKey, TransactionInstruction } from "@solana/web3.js";
+import {
+  PublicKey,
+  Transaction,
+  TransactionInstruction,
+} from "@solana/web3.js";
 
 import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
 import axios from "axios";
 
-const solanaApiUrl = "https://api.devnet.solana.com/";
-// const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+// const solanaApiUrl = "https://api.devnet.solana.com/";
+const solanaApiUrl = "https://api.mainnet-beta.solana.com";
 
 // governance -> homeView.tsx has translation
 
@@ -112,7 +116,10 @@ export const fetchDao = async (publicKey: string) => {
   return response.data.result;
 };
 
+// oyster/governances/registerRealm.ts
+// https://github.com/blockworks-foundation/governance-ui/pull/62/files
 export const createDaoRequest = async () => {
+  console.log("creating dao");
   // Args:
   // { connection, wallet, programId, programVersion?, walletPubkey }
   // name: string // of dao

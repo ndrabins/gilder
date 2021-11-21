@@ -55,31 +55,17 @@ export const GildCreation = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 2, p: 6, bgcolor: "#18181B", overflowY: "auto" }}>
-      <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        sx={{ mb: 2 }}
-      >
-        <Typography variant="h4" sx={{ color: "grey.100" }}></Typography>
-        <Box>
-          <LoadingButton
-            variant="contained"
-            // onClick={testMintToken}
-            color="secondary"
-            loading={mintStatus === "loading"}
-            sx={{
-              background: `linear-gradient(135deg, ${theme.palette.secondary.light},  ${theme.palette.secondary.dark})`,
-            }}
-          >
-            Create DAO
-          </LoadingButton>
-        </Box>
-      </Stack>
+    <Box
+      sx={{
+        flexGrow: 2,
+        bgcolor: theme.palette.grey[800],
+        overflowY: "auto",
+      }}
+    >
       <Stack direction="column">
         <DaoInfo />
-        <AddUsers />
+
+        {/* <AddUsers /> */}
       </Stack>
     </Box>
   );

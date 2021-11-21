@@ -13,8 +13,8 @@ import axios from "axios";
 const TOKEN_URL =
   "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json";
 
-const solanaApiUrl = "https://api.devnet.solana.com/";
-// const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+// const solanaApiUrl = "https://api.devnet.solana.com/";
+const solanaApiUrl = "https://api.mainnet-beta.solana.com";
 
 export const getTokenListRequest = async () => {
   const response = await axios.get(TOKEN_URL);

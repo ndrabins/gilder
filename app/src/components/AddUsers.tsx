@@ -139,68 +139,67 @@ export const AddUsers: FC = () => {
 
   return (
     <Stack sx={{ minWidth: 275, flex: 1 }} flexDirection="row">
-      <Card sx={{ p: 1, mr: 2, flex: "2" }}>
-        <CardContent>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
-            User Entry
-          </Typography>
-          <Divider sx={{ mb: 2, borderColor: "secondary.600" }} />
-          <Stack direction="row" sx={{ mb: 2 }}>
-            <TextField
-              id="wallet-key"
-              label="Wallet Key"
-              variant="outlined"
-              helperText="Public key of wallet."
-              sx={{ flexGrow: 3, mr: 1 }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
+      <Stack sx={{ p: 1, mr: 2, flex: "2" }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
+          User Entry
+        </Typography>
+        <Divider sx={{ mb: 2, borderColor: "secondary.600" }} />
+        <Stack direction="row" sx={{ mb: 2 }}>
+          <TextField
+            id="wallet-key"
+            label="Wallet Key"
+            variant="outlined"
+            helperText="Public key of wallet."
+            sx={{ flexGrow: 3, mr: 1 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
 
-            <TextField
-              id="token-amount"
-              label="Token Amount"
-              variant="outlined"
-              sx={{ flexGrow: 1, mr: 2 }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              helperText="# tokens sent."
-              type="number"
-            />
+          <TextField
+            id="token-amount"
+            label="Token Amount"
+            variant="outlined"
+            sx={{ flexGrow: 1, mr: 2 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            helperText="# tokens sent."
+            type="number"
+          />
 
-            <Stack justifyContent="center" alignItems="center">
-              <IconButton aria-label="add member" onClick={addMember}>
-                <AddIcon />
-              </IconButton>
-            </Stack>
+          <Stack justifyContent="center" alignItems="center">
+            <IconButton aria-label="add member" onClick={addMember}>
+              <AddIcon />
+            </IconButton>
           </Stack>
+        </Stack>
 
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: "bold", color: "grey.400" }}
-            gutterBottom
-          >
-            Members added
-          </Typography>
-          <Divider sx={{ mb: 2, borderColor: "grey.700" }} />
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "bold", color: "grey.400" }}
+          gutterBottom
+        >
+          Members added
+        </Typography>
+        <Divider sx={{ mb: 2, borderColor: "grey.700" }} />
 
-          {membersAdded.map((member, index) => (
-            <Tooltip title={`Tokens: ${member.tokenAmt || "<base_amount>"} `}>
-              <Chip
-                label={`${member.walletKey.slice(
-                  0,
-                  4
-                )}...${member.walletKey.slice(-4)}`}
-                sx={{ mr: 1 }}
-                onDelete={() => onDeleteClick(index)}
-              />
-            </Tooltip>
-          ))}
-        </CardContent>
-      </Card>
+        {membersAdded.map((member, index) => (
+          <Tooltip title={`Tokens: ${member.tokenAmt || "<base_amount>"} `}>
+            <Chip
+              label={`${member.walletKey.slice(
+                0,
+                4
+              )}...${member.walletKey.slice(-4)}`}
+              sx={{ mr: 1 }}
+              onDelete={() => onDeleteClick(index)}
+            />
+          </Tooltip>
+        ))}
+      </Stack>
 
-      <Card
+      {/* Hide discord till ready for integration */}
+      {/* <Card
         sx={{ p: 1, flexGrow: 1, width: "100%", overflow: "auto", flex: 1 }}
       >
         <CardContent>
@@ -222,7 +221,7 @@ export const AddUsers: FC = () => {
             ))}
           </Stack>
         </CardContent>
-      </Card>
+      </Card> */}
     </Stack>
   );
 };
