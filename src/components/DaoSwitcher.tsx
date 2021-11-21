@@ -49,7 +49,14 @@ export const DaoSwitcher: FC = () => {
     >
       <Tooltip title="Add DAO">
         <IconButton
-          sx={{ border: `1px dashed ${theme.palette.grey[500]}`, mb: 2 }}
+          sx={{
+            border: `1px dashed ${theme.palette.grey[500]}`,
+            mb: 2,
+            "&:hover": {
+              transform: "scale(1.2)",
+            },
+            transition: ".2s ease-in-out",
+          }}
           onClick={openModal}
         >
           <AddIcon sx={{ color: `${theme.palette.grey[400]}` }} />
@@ -97,14 +104,10 @@ export const DaoSwitcher: FC = () => {
                 icon={
                   <Avatar
                     sx={{
-                      color:
-                        daoData.pubkey === dao.pubkey
-                          ? "secondary.200"
-                          : "grey.300",
-                      bgcolor:
-                        daoData.pubkey === dao.pubkey
-                          ? "secondary.900"
-                          : "grey.800",
+                      "&:hover": {
+                        transform: "scale(1.2)",
+                      },
+                      transition: ".2s ease-in-out",
                     }}
                     src={`https://avatars.dicebear.com/api/jdenticon/${dao.pubkey}.svg`}
                   />

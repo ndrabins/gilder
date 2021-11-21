@@ -39,7 +39,11 @@ export const Wallet: FC = () => {
           color: "#FDCC17",
         }}
       />
-      <IconButton aria-label="add member" onClick={handleClick} sx={{ ml: 1 }}>
+      <IconButton
+        aria-label="add member"
+        onClick={handleClick}
+        sx={{ ml: 1, color: "grey.300" }}
+      >
         <SettingsIcon />
       </IconButton>
       <Menu
