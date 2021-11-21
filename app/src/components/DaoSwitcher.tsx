@@ -106,10 +106,8 @@ export const DaoSwitcher: FC = () => {
                           ? "secondary.900"
                           : "grey.800",
                     }}
-                  >
-                    {" "}
-                    {dao.pubkey.slice(0, 1)}
-                  </Avatar>
+                    src={`https://avatars.dicebear.com/api/jdenticon/${dao.pubkey}.svg`}
+                  />
                 }
                 sx={{
                   borderRadius: "100px",

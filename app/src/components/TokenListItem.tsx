@@ -12,19 +12,29 @@ import {
 import { useTheme } from "@mui/material/styles";
 
 interface TokenListItemProps {
-  token: any;
+  token: {
+    logoURI: string;
+    name: string;
+    mintAddress: string;
+  };
   amount: any;
 }
 
 export const TokenListItem = (props: TokenListItemProps) => {
   const { token, amount } = props;
 
+  console.log("token", token);
+
   return (
     <Stack flexDirection="row" alignItems="center" sx={{ p: 2 }}>
       <Stack flexDirection="row" alignItems="center" sx={{ width: "100%" }}>
-        <Avatar src={token.logoURI} sx={{ mr: 1 }}>
-          {token.logoURI}
-        </Avatar>
+        <Avatar
+          sx={{ mr: 1 }}
+          src={
+            token.logoURI ||
+            `https://avatars.dicebear.com/api/jdenticon/${token.mintAddress}.svg`
+          }
+        />
         <Typography> {token.name} </Typography>
       </Stack>
       <Stack>

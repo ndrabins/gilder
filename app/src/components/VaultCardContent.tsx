@@ -23,7 +23,8 @@ export const VaultCardContent = (props: any) => {
     }
 
     return {
-      logoURI: mintAddress.slice(0, 1),
+      mintAddress: mintAddress,
+      logoURI: "",
       name: mintAddress.slice(0, 3) + "..." + mintAddress.slice(-3),
     };
   };
