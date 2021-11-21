@@ -12,14 +12,13 @@ import {
   getSolletWallet,
   getTorusWallet,
 } from "@solana/wallet-adapter-wallets";
-import {
-  WalletModalProvider,
-  WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork, WalletError } from "@solana/wallet-adapter-base";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { useAppSelector } from "../store/hooks";
+import { RootState } from "../store/store";
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -27,8 +26,9 @@ require("@solana/wallet-adapter-react-ui/styles.css");
 export const WalletWrapper: FC = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
+  const { network } = useAppSelector((state: RootState) => state.web3);
+
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
-  const network = WalletAdapterNetwork.Devnet;
 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
@@ -44,8 +44,8 @@ export const WalletWrapper: FC = ({ children }) => {
         options: { clientId: "Get a client ID @ https://developer.tor.us" },
       }),
       getLedgerWallet(),
-      getSolletWallet({ network }),
-      getSolletExtensionWallet({ network }),
+      getSolletWallet({ network: network }),
+      getSolletExtensionWallet({ network: network }),
     ],
     [network]
   );
