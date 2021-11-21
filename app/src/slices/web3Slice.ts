@@ -113,8 +113,11 @@ export const getTokenList = createAsyncThunk("web3/getTokenList", async () => {
 
 export const getTokensOfAccount = createAsyncThunk(
   "web3/getTokensOfAccount",
-  async (publicKey: string) => {
-    return getTokensOfAccountRequest(publicKey);
+  async (publicKey: string, { getState }) => {
+    const { web3 } = getState() as RootState;
+    const { network } = web3;
+
+    return getTokensOfAccountRequest({ publicKey, network });
   }
 );
 

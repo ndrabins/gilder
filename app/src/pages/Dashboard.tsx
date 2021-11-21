@@ -8,12 +8,13 @@ import { Drawer, ActivityTimeline, VaultCardContent } from "../components";
 
 export const Dashboard = (props: any) => {
   const { daoData } = useAppSelector((state: RootState) => state.dao);
+  const { network } = useAppSelector((state: RootState) => state.web3);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchDaos(null));
     dispatch(getTokenList());
-  }, []);
+  }, [network]);
 
   useEffect(() => {
     if (daoData?.pubkey) {
@@ -21,7 +22,7 @@ export const Dashboard = (props: any) => {
       dispatch(getDaoTokens(daoData.pubkey));
       // dispatch(getDaoTokens("5rWb6R9bC5LZ6RuGQXLdLhxWW6F2418nrSMUnSduUHPr"));
     }
-  }, [daoData]);
+  }, [daoData, network]);
 
   return (
     <Stack

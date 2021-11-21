@@ -5,16 +5,14 @@ import {
   PublicKey,
   Connection,
 } from "@solana/web3.js";
-import * as web3 from "@solana/web3.js";
+import { clusterApiUrl } from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
 import axios from "axios";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 const TOKEN_URL =
   "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json";
-
-// const solanaApiUrl = "https://api.devnet.solana.com/";
-const solanaApiUrl = "https://api.mainnet-beta.solana.com";
 
 export const getTokenListRequest = async () => {
   const response = await axios.get(TOKEN_URL);
@@ -22,7 +20,15 @@ export const getTokenListRequest = async () => {
   return response.data;
 };
 
-export const getTokensOfAccountRequest = async (publicKey: string) => {
+export const getTokensOfAccountRequest = async ({
+  publicKey,
+  network,
+}: {
+  publicKey: string;
+  network: WalletAdapterNetwork;
+}) => {
+  const solanaApiUrl = clusterApiUrl(network);
+
   const data = {
     id: 1, //not sure what goes here
     jsonrpc: "2.0",

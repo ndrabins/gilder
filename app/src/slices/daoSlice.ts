@@ -26,30 +26,41 @@ const initialState: daoState = {
 export const fetchDaos = createAsyncThunk(
   "dao/fetchDaos",
   async (_: any, { getState }) => {
-    return fetchDaosRequest();
+    const { web3 } = getState() as RootState;
+
+    return fetchDaosRequest({ network: web3.network });
   }
 );
 
 export const fetchTransactions = createAsyncThunk(
   "dao/fetchTransactions",
   async (_: any, { getState }) => {
-    const { dao } = getState() as RootState;
+    const { dao, web3 } = getState() as RootState;
+    const { network } = web3;
 
-    return fetchDaoTransactionsRequest(dao.daoData.pubkey);
+    return fetchDaoTransactionsRequest({
+      publicKey: dao.daoData.pubkey,
+      network,
+    });
   }
 );
 
 export const getDaoTokens = createAsyncThunk(
   "dao/getDaoTokens",
-  async (publicKey: string) => {
-    return getTokensOfAccountRequest(publicKey);
+  async (publicKey: string, { getState }) => {
+    const { web3 } = getState() as RootState;
+    const { network } = web3;
+    return getTokensOfAccountRequest({ publicKey, network });
   }
 );
 
 //
 export const createDao = createAsyncThunk(
   "dao/createDao",
-  async (publicKey: string) => {
+  async (publicKey: string, { getState }) => {
+    const { web3 } = getState() as RootState;
+    const { network } = web3;
+
     return createDaoRequest();
   }
 );

@@ -4,13 +4,11 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 
-import * as web3 from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import bs58 from "bs58";
 import axios from "axios";
-
-// const solanaApiUrl = "https://api.devnet.solana.com/";
-const solanaApiUrl = "https://api.mainnet-beta.solana.com";
+import { clusterApiUrl } from "@solana/web3.js";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 // governance -> homeView.tsx has translation
 
@@ -19,10 +17,14 @@ const solanaApiUrl = "https://api.mainnet-beta.solana.com";
 // getTokenAccountsByOwner
 // get
 
-export const fetchDaosRequest = async () => {
+export const fetchDaosRequest = async ({
+  network,
+}: {
+  network: WalletAdapterNetwork;
+}) => {
   const programId = "GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw";
   const programPk = new PublicKey(programId);
-  // TODO: replace this with what network wallet is on
+  const solanaApiUrl = clusterApiUrl(network);
 
   const filters = [] as Array<any>;
   // no idea what this is yet.
@@ -84,7 +86,15 @@ export const fetchDaosRequest = async () => {
   return rawAccounts;
 };
 
-export const fetchDaoTransactionsRequest = async (publicKey: string) => {
+export const fetchDaoTransactionsRequest = async ({
+  publicKey,
+  network,
+}: {
+  publicKey: string;
+  network: WalletAdapterNetwork;
+}) => {
+  const solanaApiUrl = clusterApiUrl(network);
+
   // no idea what this is yet.
   const data = {
     id: 1, //not sure what goes here
@@ -100,7 +110,15 @@ export const fetchDaoTransactionsRequest = async (publicKey: string) => {
   return response.data.result;
 };
 
-export const fetchDao = async (publicKey: string) => {
+export const fetchDao = async ({
+  publicKey,
+  network,
+}: {
+  publicKey: string;
+  network: WalletAdapterNetwork;
+}) => {
+  const solanaApiUrl = clusterApiUrl(network);
+
   // no idea what this is yet.
   const data = {
     id: 1, //not sure what goes here
