@@ -4,12 +4,10 @@ import App from "./App";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
-import CssBaseline from "@mui/material/CssBaseline";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CssBaseline />
       <App />
     </Provider>
   </React.StrictMode>,

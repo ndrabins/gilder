@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utilities/theme";
 import { NavRoutes } from "./Routes";
 import { createGlobalStyle } from "styled-components";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,14 +14,13 @@ const GlobalStyle = createGlobalStyle`
   #root {
     height: 100vh;
   }
-
 `;
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <GlobalStyle />
-      <div />
       <NavRoutes />
     </ThemeProvider>
   );

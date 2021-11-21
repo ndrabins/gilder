@@ -119,8 +119,6 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: darkScrollbar(),
-        html: darkScrollbar(),
-        div: darkScrollbar(),
       },
     },
   },
