@@ -89,7 +89,12 @@ export const Drawer = () => {
                 {item.key === "Proposals" && <HowToVoteIcon />}
                 {item.key === "Activity" && <ActivityIcon />}
               </ListItemIcon>
-              <ListItemText primary={item.key} />
+              <ListItemText
+                primaryTypographyProps={{
+                  fontWeight: selectedNav === item.key ? "bold" : "medium",
+                }}
+                primary={item.key}
+              />
             </ListItem>
           ))}
         </List>

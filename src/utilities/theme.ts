@@ -115,10 +115,20 @@ export const theme = createTheme({
     },
     error: { ...red },
   },
+  typography: {
+    fontFamily: "Sora, sans-serif, Roboto",
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: darkScrollbar(),
+        root: `
+          @font-face {
+            font-family: 'Sora';
+            font-style: normal;
+            font-weight: 400;
+          }, 
+        `,
       },
     },
   },
