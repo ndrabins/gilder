@@ -10,7 +10,6 @@ import {
   getSolflareWallet,
   getSolletExtensionWallet,
   getSolletWallet,
-  getTorusWallet,
 } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
@@ -40,9 +39,6 @@ export const WalletWrapper: FC = ({ children }) => {
       getPhantomWallet(),
       getSlopeWallet(),
       getSolflareWallet(),
-      getTorusWallet({
-        options: { clientId: "Get a client ID @ https://developer.tor.us" },
-      }),
       getLedgerWallet(),
       getSolletWallet({ network: network }),
       getSolletExtensionWallet({ network: network }),
@@ -66,6 +62,7 @@ export const WalletWrapper: FC = ({ children }) => {
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect onError={onError}>
+        {/* @ts-ignore */}
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <MuiAlert
             onClose={handleClose}
