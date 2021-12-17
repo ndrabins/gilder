@@ -1171,6 +1171,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.16.3":
+  version "7.16.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
+  integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.15.4", "@babel/template@^7.3.3":
   version "7.15.4"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.15.4.tgz"
@@ -1299,6 +1306,17 @@
     "@emotion/weak-memoize" "^0.2.5"
     stylis "^4.0.10"
 
+"@emotion/cache@^11.6.0":
+  version "11.6.0"
+  resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-11.6.0.tgz#65fbdbbe4382f1991d8b20853c38e63ecccec9a1"
+  integrity sha512-ElbsWY1KMwEowkv42vGo0UPuLgtPYfIs9BxxVrmvsaJVvktknsHYYlx5NQ5g6zLDcOTyamlDc7FkRg2TAcQDKQ==
+  dependencies:
+    "@emotion/memoize" "^0.7.4"
+    "@emotion/sheet" "^1.1.0"
+    "@emotion/utils" "^1.0.0"
+    "@emotion/weak-memoize" "^0.2.5"
+    stylis "^4.0.10"
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.npmjs.org/@emotion/hash/-/hash-0.8.0.tgz"
@@ -1356,6 +1374,11 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@emotion/sheet/-/sheet-1.0.3.tgz#00c326cd7985c5ccb8fe2c1b592886579dcfab8f"
   integrity sha512-YoX5GyQ4db7LpbmXHMuc8kebtBGP6nZfRC5Z13OKJMixBEwdZrJ914D6yJv/P+ZH/YY3F5s89NYX2hlZAf3SRQ==
+
+"@emotion/sheet@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@emotion/sheet/-/sheet-1.1.0.tgz#56d99c41f0a1cda2726a05aa6a20afd4c63e58d2"
+  integrity sha512-u0AX4aSo25sMAygCuQTzS+HsImZFuS8llY8O7b9MDRzbJM0kVJlAz6KNDqcG7pOuQZJmj/8X/rAW+66kMnMW+g==
 
 "@emotion/styled@^11.3.0":
   version "11.3.0"
@@ -1841,12 +1864,12 @@
     prop-types "^15.7.2"
 
 "@mui/styled-engine@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-5.1.0.tgz#9f25606505c94e7364bdc9e5d5520cbac1daef2a"
-  integrity sha512-Z27hexqYL21z+iVat47n1E/Tj4r83JK6hXaOFj2rYMYz0lJQ6YGLF+c2B3NNJoglL76Vo0w4yKC63FsO+015kw==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@mui/styled-engine/-/styled-engine-5.1.1.tgz#eb6a54546e65527786ab40aef9e2f20cc2fa00f5"
+  integrity sha512-vThhmTezPjBcn6CEeVuFqB3wgANnxHgYXn0wsr+OIgevkgSHeRfVn6mpSa66oTFGb+paPtH4ASqeUvL5Sscg4w==
   dependencies:
-    "@babel/runtime" "^7.16.0"
-    "@emotion/cache" "^11.5.0"
+    "@babel/runtime" "^7.16.3"
+    "@emotion/cache" "^11.6.0"
     prop-types "^15.7.2"
 
 "@mui/styled-engine@npm:@mui/styled-engine-sc@latest":
@@ -10558,6 +10581,11 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
+
+redux-persist@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
+  integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
 
 redux-thunk@^2.3.0:
   version "2.3.0"

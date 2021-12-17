@@ -10,20 +10,14 @@ import axios from "axios";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
-// governance -> homeView.tsx has translation
-
-// squads
-// getAccountInfo
-// getTokenAccountsByOwner
-// get
+const GOVERNANCE_PROGRAM_ID = "GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw";
 
 export const fetchDaosRequest = async ({
   network,
 }: {
   network: WalletAdapterNetwork;
 }) => {
-  const programId = "GovER5Lthms3bLBqWub97yVrMmEogzX7xNjdXpPPCVZw";
-  const programPk = new PublicKey(programId);
+  const programPk = new PublicKey(GOVERNANCE_PROGRAM_ID);
   const solanaApiUrl = clusterApiUrl(network);
 
   const filters = [] as Array<any>;
@@ -136,6 +130,16 @@ export const fetchDao = async ({
 
 // oyster/governances/registerRealm.ts
 // https://github.com/blockworks-foundation/governance-ui/pull/62/files
+
+//program_id: &Pubkey,
+// realm_authority: &Pubkey,
+// community_token_mint: &Pubkey,
+// payer: &Pubkey,
+// council_token_mint: Option<Pubkey>,
+// name: String,
+// min_community_tokens_to_create_governance: u64,
+// community_mint_max_vote_weight_source: MintMaxVoteWeightSource
+
 export const createDaoRequest = async () => {
   console.log("creating dao");
   // Args:

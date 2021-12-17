@@ -54,7 +54,14 @@ export const getDaoTokens = createAsyncThunk(
   }
 );
 
-//
+//program_id: &Pubkey,
+// realm_authority: &Pubkey,
+// community_token_mint: &Pubkey,
+// payer: &Pubkey,
+// council_token_mint: Option<Pubkey>,
+// name: String,
+// min_community_tokens_to_create_governance: u64,
+// community_mint_max_vote_weight_source: MintMaxVoteWeightSource
 export const createDao = createAsyncThunk(
   "dao/createDao",
   async (publicKey: string, { getState }) => {
